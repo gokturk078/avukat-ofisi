@@ -1,412 +1,647 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yılmaz Hukuk Bürosu | İstanbul Avukatlık - İş & Ceza Hukuku</title>
-  <meta name="description" content="1998'den beri İstanbul'da avukatlık hizmeti. İş hukuku, ceza hukuku, aile hukuku uzmanı. İlk görüşme ücretsiz. ☎ 0212 987 65 43">
-  <meta name="keywords" content="avukat istanbul, iş avukatı, ceza avukatı, boşanma avukatı, beşiktaş avukat">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body class="font-sans text-gray-800 antialiased">
+  <title>Yılmaz Hukuk Bürosu | İstanbul'un Önde Gelen İş ve Ceza Hukuku Uzmanı</title>
+  <meta name="description"
+    content="1998'den beri İstanbul'da hukuki danışmanlık. İş hukuku, ceza hukuku uzmanı. %95 başarı oranı, 5000+ kazanılmış dava. İlk görüşme ücretsiz. ☎ 0212 987 65 43">
+  <meta name="keywords"
+    content="istanbul avukat, iş avukatı, ceza avukatı, boşanma avukatı, hukuk bürosu, yılmaz hukuk">
 
+  <!-- Open Graph -->
+  <meta property="og:title" content="Yılmaz Hukuk Bürosu | İstanbul">
+  <meta property="og:description" content="İstanbul'un önde gelen hukuk bürosu. %95 başarı oranı.">
+  <meta property="og:image" content="images/hero-bg.png">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LegalService",
+    "name": "Yılmaz Hukuk Bürosu",
+    "image": "images/hero-bg.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Nispetiye Mah. Aytar Cad. No:12/5",
+      "addressLocality": "Etiler, Beşiktaş",
+      "addressRegion": "İstanbul",
+      "postalCode": "34340",
+      "addressCountry": "TR"
+    },
+    "telephone": "+902129876543",
+    "priceRange": "$$",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "127"
+    }
+  }
+  </script>
+</head>
+
+<body>
   <!-- NAVBAR -->
-  <nav id="navbar" class="fixed w-full bg-white/95 backdrop-blur-sm z-50 transition-shadow duration-300">
-    <div class="container mx-auto flex justify-between items-center px-6 py-4">
-      <a href="#ana-sayfa" class="flex items-center gap-3">
-        <div class="w-12 h-12 bg-navy rounded-lg flex items-center justify-center">
-          <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18l7 3.5v7.64l-7 3.5-7-3.5V7.68l7-3.5z"/></svg>
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-logo">
+        <div class="logo-icon">
+          <svg width="28" height="28" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M24 4L4 14v4l20 10 20-10v-4L24 4z" />
+            <path d="M4 18v12l20 10 20-10V18" />
+          </svg>
         </div>
-        <span class="text-xl font-bold text-navy font-serif">Yılmaz Hukuk</span>
+        <span class="logo-text">Yılmaz Hukuk</span>
       </a>
-      <ul class="hidden md:flex space-x-8">
-        <li><a href="#ana-sayfa" class="nav-link">Ana Sayfa</a></li>
-        <li><a href="#uzmanlik" class="nav-link">Uzmanlık Alanları</a></li>
-        <li><a href="#avukatlar" class="nav-link">Avukatlarımız</a></li>
-        <li><a href="#hakkimizda" class="nav-link">Hakkımızda</a></li>
-        <li><a href="#iletisim" class="nav-link">İletişim</a></li>
+
+      <ul class="navbar-menu">
+        <li><a href="index.html" class="navbar-link">Ana Sayfa</a></li>
+        <li><a href="practice-areas.html" class="navbar-link">Uzmanlık Alanları</a></li>
+        <li><a href="team.html" class="navbar-link">Avukatlarımız</a></li>
+        <li><a href="blog.html" class="navbar-link">Blog</a></li>
+        <li><a href="about.html" class="navbar-link">Hakkımızda</a></li>
+        <li><a href="contact.html" class="navbar-link">İletişim</a></li>
       </ul>
-      <a href="#iletisim" class="hidden md:block btn-primary">Ücretsiz Ön Görüşme</a>
-      <button id="mobile-menu-btn" class="md:hidden text-navy" aria-label="Menüyü aç">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+
+      <a href="contact.html" class="btn btn-primary navbar-cta">Ücretsiz Ön Görüşme</a>
+
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menü">
+        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 8h20M4 14h20M4 20h20" />
+        </svg>
       </button>
-    </div>
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-navy text-white">
-      <div class="container mx-auto px-6 py-8 flex flex-col gap-6">
-        <a href="#ana-sayfa" class="text-xl hover:text-gold">Ana Sayfa</a>
-        <a href="#uzmanlik" class="text-xl hover:text-gold">Uzmanlık Alanları</a>
-        <a href="#avukatlar" class="text-xl hover:text-gold">Avukatlarımız</a>
-        <a href="#hakkimizda" class="text-xl hover:text-gold">Hakkımızda</a>
-        <a href="#iletisim" class="text-xl hover:text-gold">İletişim</a>
-        <a href="#iletisim" class="btn-gold mt-4 text-center">Ücretsiz Ön Görüşme</a>
-      </div>
     </div>
   </nav>
 
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay" id="mobile-overlay"></div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html" class="mobile-menu-link">Ana Sayfa</a>
+    <a href="practice-areas.html" class="mobile-menu-link">Uzmanlık Alanları</a>
+    <a href="team.html" class="mobile-menu-link">Avukatlarımız</a>
+    <a href="blog.html" class="mobile-menu-link">Blog</a>
+    <a href="about.html" class="mobile-menu-link">Hakkımızda</a>
+    <a href="contact.html" class="mobile-menu-link">İletişim</a>
+    <a href="contact.html" class="btn btn-gold mt-8">Ücretsiz Ön Görüşme</a>
+  </div>
+
   <!-- HERO SECTION -->
-  <section id="ana-sayfa" class="relative min-h-screen flex items-center justify-center hero-bg">
-    <div class="absolute inset-0 bg-navy/80"></div>
-    <div class="relative z-10 text-center text-white px-6 max-w-4xl mx-auto" data-aos="fade-up">
-      <h1 class="font-serif text-4xl md:text-6xl font-bold mb-4 leading-tight">Yılmaz Hukuk Bürosu</h1>
-      <p class="text-xl md:text-2xl mb-3 text-white/90">İş Hukuku ve Ceza Hukuku Uzmanı</p>
-      <p class="text-lg mb-10 text-white/80">1998'den beri hakkınızı koruyoruz • 5000+ başarılı dava • %95 kazanma oranı</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#uzmanlik" class="btn-primary text-lg px-8 py-4">Uzmanlık Alanlarımız</a>
-        <a href="#iletisim" class="btn-outline text-lg px-8 py-4">Hemen İletişime Geçin</a>
-      </div>
-    </div>
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-      <svg class="w-8 h-8 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
-    </div>
-  </section>
+  <section class="hero" id="hero">
+    <div class="hero-bg" style="background-image: url('images/hero-bg.png');"></div>
+    <div class="hero-overlay"></div>
 
-  <!-- UZMANLIK ALANLARI -->
-  <section id="uzmanlik" class="py-20 px-6 bg-white">
-    <div class="container mx-auto max-w-6xl">
-      <h2 class="section-title" data-aos="fade-up">Uzmanlık Alanlarımız</h2>
-      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Her türlü hukuki sorununuzda yanınızdayız. 25 yıllık deneyimimizle hakkınızı sonuna kadar koruyoruz.</p>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="service-icon">⚖️</div>
-          <h3 class="service-title">İş Hukuku</h3>
-          <p class="service-desc">İşçi ve işveren haklarının korunması, tazminat davaları, iş sözleşmesi düzenlemeleri ve iş mahkemesi süreçlerinde profesyonel destek.</p>
-          <a href="#iletisim" class="service-link">Detaylı Bilgi →</a>
+    <div class="hero-content fade-in-up">
+      <!-- Trust Badge -->
+      <div class="hero-badge">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+          <path
+            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+        </svg>
+        <span>İstanbul'un En Güvenilir Hukuk Bürosu</span>
+      </div>
+
+      <h1 class="hero-title">Hakkınızı Korumak<br>İçin Buradayız</h1>
+      <p class="hero-subtitle">1998'den beri Türkiye'nin önde gelen iş ve ceza hukuku uzmanı.<br
+          class="hide-mobile">Deneyimli kadromuzla her adımda yanınızdayız.</p>
+
+      <!-- Stats Card -->
+      <div class="hero-stats-card">
+        <div class="hero-stat">
+          <span class="hero-stat-number" data-count="5000">0</span><span class="hero-stat-suffix">+</span>
+          <span class="hero-stat-label">Kazanılan Dava</span>
         </div>
-        <div class="service-card" data-aos="fade-up" data-aos-delay="150">
-          <div class="service-icon">🛡️</div>
-          <h3 class="service-title">Ceza Hukuku</h3>
-          <p class="service-desc">Suç davalarında savunma, hukuki koruma, tutukluluk süreçleri ve ceza mahkemelerinde temsil hizmeti.</p>
-          <a href="#iletisim" class="service-link">Detaylı Bilgi →</a>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-number">%95</span>
+          <span class="hero-stat-label">Başarı Oranı</span>
         </div>
-        <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="service-icon">👨‍👩‍👧</div>
-          <h3 class="service-title">Aile & Boşanma</h3>
-          <p class="service-desc">Boşanma davaları, velayet, nafaka, mal paylaşımı ve evlilik sözleşmeleri konularında uzman danışmanlık.</p>
-          <a href="#iletisim" class="service-link">Detaylı Bilgi →</a>
-        </div>
-        <div class="service-card" data-aos="fade-up" data-aos-delay="250">
-          <div class="service-icon">📜</div>
-          <h3 class="service-title">Miras Hukuku</h3>
-          <p class="service-desc">Miras davaları, veraset işlemleri, terekenin paylaşımı ve vasiyetname düzenlemeleri.</p>
-          <a href="#iletisim" class="service-link">Detaylı Bilgi →</a>
-        </div>
-        <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="service-icon">🏠</div>
-          <h3 class="service-title">Gayrimenkul Hukuku</h3>
-          <p class="service-desc">Tapu davaları, kira ihtilafları, kamulaştırma ve kat mülkiyeti uyuşmazlıkları.</p>
-          <a href="#iletisim" class="service-link">Detaylı Bilgi →</a>
-        </div>
-        <div class="service-card" data-aos="fade-up" data-aos-delay="350">
-          <div class="service-icon">💼</div>
-          <h3 class="service-title">Ticaret Hukuku</h3>
-          <p class="service-desc">Şirket kuruluşu, ticari sözleşmeler, alacak-verecek davaları ve iflas süreçleri.</p>
-          <a href="#iletisim" class="service-link">Detaylı Bilgi →</a>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-number" data-count="25">0</span><span class="hero-stat-suffix">+</span>
+          <span class="hero-stat-label">Yıllık Deneyim</span>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- NEDEN BİZ -->
-  <section id="hakkimizda" class="py-20 px-6 bg-gray-50">
-    <div class="container mx-auto max-w-6xl">
-      <h2 class="section-title" data-aos="fade-up">Neden Yılmaz Hukuk'u Seçmelisiniz?</h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-        <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="feature-icon">🎓</div>
-          <h3 class="feature-title">25+ Yıl Deneyim</h3>
-          <p class="feature-desc">1998'den beri kesintisiz hukuki hizmet</p>
+      <div class="hero-cta">
+        <a href="contact.html" class="btn btn-gold btn-lg">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path
+              d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+          </svg>
+          Ücretsiz Danışmanlık
+        </a>
+        <a href="practice-areas.html" class="btn btn-outline btn-lg">Uzmanlık Alanları</a>
+      </div>
+
+      <!-- Trust Mini -->
+      <div class="hero-trust">
+        <div class="hero-trust-item">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+              clip-rule="evenodd" />
+          </svg>
+          <span>İlk Görüşme Ücretsiz</span>
         </div>
-        <div class="feature-card" data-aos="fade-up" data-aos-delay="150">
-          <div class="feature-icon">🏆</div>
-          <h3 class="feature-title">%95 Başarı Oranı</h3>
-          <p class="feature-desc">5000+ davada müvekkillerimiz için zafer</p>
-        </div>
-        <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="feature-icon">⏰</div>
-          <h3 class="feature-title">7/24 Destek</h3>
-          <p class="feature-desc">Acil durumlarda her zaman yanınızdayız</p>
-        </div>
-        <div class="feature-card" data-aos="fade-up" data-aos-delay="250">
-          <div class="feature-icon">🎁</div>
-          <h3 class="feature-title">İlk Görüşme Ücretsiz</h3>
-          <p class="feature-desc">Hiçbir ücret ödemeden danışın</p>
+        <div class="hero-trust-item">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+              clip-rule="evenodd" />
+          </svg>
+          <span>7/24 Destek</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- AVUKATLARIMIZ -->
-  <section id="avukatlar" class="py-20 px-6 bg-white">
-    <div class="container mx-auto max-w-6xl">
-      <h2 class="section-title" data-aos="fade-up">Deneyimli Avukat Kadromuz</h2>
-      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Ekibimiz, alanında uzman ve barodan kayıtlı avukatlardan oluşmaktadır.</p>
-      <div class="grid md:grid-cols-3 gap-8 mt-12">
-        <div class="lawyer-card" data-aos="fade-up" data-aos-delay="100">
-          <img src="images/lawyer-1.png" alt="Av. Mehmet Yılmaz" class="lawyer-img" loading="lazy">
-          <h3 class="lawyer-name">Av. Mehmet Yılmaz</h3>
-          <p class="lawyer-title">Kurucu Ortak</p>
-          <ul class="lawyer-info">
-            <li>İstanbul Üniversitesi Hukuk (1998)</li>
-            <li>İstanbul Barosu - Sicil No: 24567</li>
-            <li>Uzmanlık: İş Hukuku, Ceza Hukuku</li>
-          </ul>
+  <!-- TRUST INDICATORS -->
+  <section class="py-8 bg-gray-50">
+    <div class="container">
+      <div class="flex items-center justify-center gap-12 flex-wrap">
+        <div class="text-center">
+          <p class="text-sm text-gray-500 mb-2">Üye Kuruluşlar</p>
+          <div class="flex items-center gap-8">
+            <span class="font-semibold text-navy">İstanbul Barosu</span>
+            <span class="font-semibold text-navy">Türkiye Barolar Birliği</span>
+          </div>
         </div>
-        <div class="lawyer-card" data-aos="fade-up" data-aos-delay="150">
-          <img src="images/lawyer-2.png" alt="Av. Ayşe Kara" class="lawyer-img" loading="lazy">
-          <h3 class="lawyer-name">Av. Ayşe Kara</h3>
-          <p class="lawyer-title">Kıdemli Ortak</p>
-          <ul class="lawyer-info">
-            <li>Ankara Üniversitesi Hukuk (2005)</li>
-            <li>İstanbul Barosu - Sicil No: 35891</li>
-            <li>Uzmanlık: Aile Hukuku, Miras</li>
-          </ul>
-        </div>
-        <div class="lawyer-card" data-aos="fade-up" data-aos-delay="200">
-          <img src="images/lawyer-3.png" alt="Av. Emre Demir" class="lawyer-img" loading="lazy">
-          <h3 class="lawyer-name">Av. Emre Demir</h3>
-          <p class="lawyer-title">Avukat</p>
-          <ul class="lawyer-info">
-            <li>Galatasaray Üniversitesi Hukuk (2015)</li>
-            <li>İstanbul Barosu - Sicil No: 52134</li>
-            <li>Uzmanlık: Ticaret, Gayrimenkul</li>
-          </ul>
+        <div class="text-center">
+          <p class="text-sm text-gray-500 mb-2">Google Değerlendirmesi</p>
+          <div class="flex items-center gap-2">
+            <div class="flex text-gold">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            </div>
+            <span class="font-bold text-navy">4.9/5</span>
+            <span class="text-gray-500">(127 yorum)</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- BAŞARI HİKAYELERİ -->
-  <section class="py-20 px-6 bg-navy text-white">
-    <div class="container mx-auto max-w-6xl">
-      <h2 class="text-3xl md:text-4xl font-serif font-bold text-center mb-12" data-aos="fade-up">Başarı Hikayelerimiz</h2>
+  <!-- PRACTICE AREAS -->
+  <section class="section bg-white" id="practice-areas">
+    <div class="container">
+      <div class="section-header">
+        <h2>Uzmanlık Alanlarımız</h2>
+        <p>Her türlü hukuki sorununuzda yanınızdayız. 25 yıllık deneyimimizle hakkınızı sonuna kadar koruyoruz.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- İş Hukuku -->
+        <a href="is-hukuku.html" class="practice-card">
+          <div class="card-image">
+            <img src="images/is-hukuku.jpg" alt="İş Hukuku" loading="lazy">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-content">
+            <svg class="card-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <rect x="8" y="12" width="32" height="28" rx="2" />
+              <path d="M16 8v4M32 8v4M8 20h32M16 28h16M16 34h8" />
+            </svg>
+            <h3>İş Hukuku</h3>
+            <p>Haksız fesih, tazminat, işe iade davaları</p>
+            <span class="card-link">Detaylı Bilgi <svg width="16" height="16" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <path d="M5 12l7-7M5 5h7v7" />
+              </svg></span>
+          </div>
+        </a>
+
+        <!-- Ceza Hukuku -->
+        <a href="ceza-hukuku.html" class="practice-card">
+          <div class="card-image">
+            <img src="images/ceza-hukuku.jpg" alt="Ceza Hukuku" loading="lazy">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-content">
+            <svg class="card-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <path d="M24 4L6 16v20c0 6 8 8 18 8s18-2 18-8V16L24 4z" />
+              <path d="M24 20l-8 8 4 4 4-4 4 4 4-4-8-8z" />
+            </svg>
+            <h3>Ceza Hukuku</h3>
+            <p>Ceza davaları, savunma, beraat stratejileri</p>
+            <span class="card-link">Detaylı Bilgi <svg width="16" height="16" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <path d="M5 12l7-7M5 5h7v7" />
+              </svg></span>
+          </div>
+        </a>
+
+        <!-- Aile Hukuku -->
+        <a href="aile-bosanma.html" class="practice-card">
+          <div class="card-image">
+            <img src="images/aile-hukuku.jpg" alt="Aile Hukuku" loading="lazy">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-content">
+            <svg class="card-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <circle cx="16" cy="14" r="6" />
+              <circle cx="32" cy="14" r="6" />
+              <path d="M4 38c0-8 5-12 12-12M44 38c0-8-5-12-12-12" />
+              <circle cx="24" cy="30" r="4" />
+              <path d="M14 44c0-6 4-10 10-10s10 4 10 10" />
+            </svg>
+            <h3>Aile & Boşanma</h3>
+            <p>Boşanma, velayet, nafaka, mal paylaşımı</p>
+            <span class="card-link">Detaylı Bilgi <svg width="16" height="16" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <path d="M5 12l7-7M5 5h7v7" />
+              </svg></span>
+          </div>
+        </a>
+
+        <!-- Miras Hukuku -->
+        <a href="miras-hukuku.html" class="practice-card">
+          <div class="card-image">
+            <img src="images/miras-hukuku.jpg" alt="Miras Hukuku" loading="lazy">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-content">
+            <svg class="card-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <path d="M12 4h24l8 8v32a2 2 0 01-2 2H10a2 2 0 01-2-2V6a2 2 0 012-2z" />
+              <path d="M36 4v8h8M16 20h16M16 28h16M16 36h8" />
+            </svg>
+            <h3>Miras Hukuku</h3>
+            <p>Miras davaları, veraset, vasiyetname</p>
+            <span class="card-link">Detaylı Bilgi <svg width="16" height="16" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <path d="M5 12l7-7M5 5h7v7" />
+              </svg></span>
+          </div>
+        </a>
+
+        <!-- Gayrimenkul -->
+        <a href="gayrimenkul-hukuku.html" class="practice-card">
+          <div class="card-image">
+            <img src="images/gayrimenkul-hukuku.jpg" alt="Gayrimenkul Hukuku" loading="lazy">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-content">
+            <svg class="card-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <path d="M8 40V18l16-10 16 10v22M4 40h40" />
+              <rect x="18" y="28" width="12" height="12" />
+            </svg>
+            <h3>Gayrimenkul Hukuku</h3>
+            <p>Tapu, kira, kamulaştırma davaları</p>
+            <span class="card-link">Detaylı Bilgi <svg width="16" height="16" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <path d="M5 12l7-7M5 5h7v7" />
+              </svg></span>
+          </div>
+        </a>
+
+        <!-- Ticaret Hukuku -->
+        <a href="ticaret-hukuku.html" class="practice-card">
+          <div class="card-image">
+            <img src="images/ticaret-hukuku.jpg" alt="Ticaret Hukuku" loading="lazy">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-content">
+            <svg class="card-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <path d="M36 8H12a4 4 0 00-4 4v24a4 4 0 004 4h24a4 4 0 004-4V12a4 4 0 00-4-4z" />
+              <path d="M16 16l6 6-6 6M26 32h8" />
+            </svg>
+            <h3>Ticaret Hukuku</h3>
+            <p>Şirket kuruluşu, sözleşmeler, alacak davaları</p>
+            <span class="card-link">Detaylı Bilgi <svg width="16" height="16" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <path d="M5 12l7-7M5 5h7v7" />
+              </svg></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="section bg-gray-50">
+    <div class="container">
+      <div class="section-header">
+        <h2>Neden 5000+ Müvekkil Bizi Seçti?</h2>
+        <p>Güvenilirlik, uzmanlık ve şeffaflık ilkeleriyle çalışıyoruz.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M40 12l-16 8-16-8 16-8 16 8z" />
+              <path d="M8 12v16l16 8 16-8V12" />
+            </svg>
+          </div>
+          <h3>25+ Yıl Deneyim</h3>
+          <p>1998'den beri kesintisiz hukuki hizmet</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="24" cy="24" r="18" />
+              <path d="M16 24l6 6 10-12" />
+            </svg>
+          </div>
+          <h3>%95 Başarı Oranı</h3>
+          <p>5000+ davada müvekkillerimiz için zafer</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="24" cy="24" r="18" />
+              <path d="M24 12v12l8 4" />
+            </svg>
+          </div>
+          <h3>7/24 Destek</h3>
+          <p>Acil durumlarda her zaman yanınızdayız</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="32" height="32" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M24 4l6 12 13 2-9.5 9 2.5 13-12-6.5L12 40l2.5-13L5 18l13-2 6-12z" />
+            </svg>
+          </div>
+          <h3>İlk Görüşme Ücretsiz</h3>
+          <p>Hiçbir ücret ödemeden danışabilirsiniz</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUCCESS METRICS -->
+  <section class="metrics-section">
+    <div class="container">
+      <div class="metrics-grid">
+        <div class="metric-item">
+          <span class="metric-number" data-count="5000">0</span><span class="metric-suffix">+</span>
+          <p class="metric-label">Kazanılan Dava</p>
+        </div>
+        <div class="metric-item">
+          <span class="metric-number">%95</span>
+          <p class="metric-label">Başarı Oranı</p>
+        </div>
+        <div class="metric-item">
+          <span class="metric-number" data-count="25">0</span><span class="metric-suffix">+</span>
+          <p class="metric-label">Yıl Deneyim</p>
+        </div>
+        <div class="metric-item">
+          <span class="metric-number" data-count="50">0</span><span class="metric-suffix">+</span>
+          <p class="metric-label">Uzman Avukat</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="section-header">
+        <h2>Müvekkillerimiz Ne Diyor?</h2>
+        <p>Binlerce müvekkilimizin güvenini kazandık.</p>
+      </div>
+
       <div class="grid md:grid-cols-3 gap-6">
-        <div class="success-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="text-gold text-4xl mb-4">🏆</div>
-          <h3 class="text-xl font-bold mb-3">Haksız İşten Çıkarma</h3>
-          <p class="text-white/80 mb-4">Müvekkilimiz haklı sebep olmadan işten çıkarılmıştı. Yargı sürecinde haksızlığı kanıtladık.</p>
-          <div class="bg-white/10 rounded-lg p-4">
-            <p class="text-gold font-semibold">✓ 750.000 TL tazminat</p>
-            <p class="text-white/80">✓ 8 ayda sonuçlandı</p>
+        <div class="testimonial-card">
+          <div class="stars">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
           </div>
+          <p class="testimonial-text">"Av. Mehmet Bey'e iş davamda büyük destek oldu. Profesyonel yaklaşımı sayesinde
+            750.000 TL tazminat hakkımı aldım. Kesinlikle tavsiye ederim."</p>
+          <p class="testimonial-author">A.K.</p>
+          <p class="testimonial-role">İş Hukuku Müvekkili</p>
         </div>
-        <div class="success-card" data-aos="fade-up" data-aos-delay="150">
-          <div class="text-gold text-4xl mb-4">⚖️</div>
-          <h3 class="text-xl font-bold mb-3">Ceza Davası Beraati</h3>
-          <p class="text-white/80 mb-4">Ağır ceza ile yargılanan müvekkilimizi delil yetersizliği ile beraat ettirdik.</p>
-          <div class="bg-white/10 rounded-lg p-4">
-            <p class="text-gold font-semibold">✓ Tam beraat kararı</p>
-            <p class="text-white/80">✓ 12 ayda sonuçlandı</p>
+
+        <div class="testimonial-card">
+          <div class="stars">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
           </div>
+          <p class="testimonial-text">"Boşanma sürecimde Av. Ayşe Hanım çok yardımcı oldu. Zorlu dönemde hem hukuki hem
+            moral destek sağladı. Velayet hakkımı kazandım."</p>
+          <p class="testimonial-author">M.Y.</p>
+          <p class="testimonial-role">Aile Hukuku Müvekkili</p>
         </div>
-        <div class="success-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="text-gold text-4xl mb-4">👨‍👩‍👧</div>
-          <h3 class="text-xl font-bold mb-3">Velayet Davası</h3>
-          <p class="text-white/80 mb-4">Çocuğun üstün yararını gözeterek müvekkilimize velayet hakkı kazandırdık.</p>
-          <div class="bg-white/10 rounded-lg p-4">
-            <p class="text-gold font-semibold">✓ Velayet hakkı kazanıldı</p>
-            <p class="text-white/80">✓ 6 ayda sonuçlandı</p>
+
+        <div class="testimonial-card">
+          <div class="stars">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
           </div>
+          <p class="testimonial-text">"Ceza davamda beraat ettim. Av. Emre Bey'in stratejik yaklaşımı ve mahkemedeki
+            performansı sayesinde özgürlüğüme kavuştum."</p>
+          <p class="testimonial-author">T.Ö.</p>
+          <p class="testimonial-role">Ceza Hukuku Müvekkili</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SÜREÇ -->
-  <section class="py-20 px-6 bg-white">
-    <div class="container mx-auto max-w-5xl">
-      <h2 class="section-title" data-aos="fade-up">Çalışma Sürecimiz</h2>
-      <div class="grid md:grid-cols-4 gap-8 mt-12">
-        <div class="process-step" data-aos="fade-up" data-aos-delay="100">
-          <div class="process-number">1</div>
-          <h3 class="process-title">Ücretsiz Ön Görüşme</h3>
-          <p class="process-desc">Durumunuzu dinler, genel değerlendirme yaparız.</p>
-        </div>
-        <div class="process-step" data-aos="fade-up" data-aos-delay="150">
-          <div class="process-number">2</div>
-          <h3 class="process-title">Dosya İnceleme</h3>
-          <p class="process-desc">Belgelerinizi detaylı inceler, haklarınızı analiz ederiz.</p>
-        </div>
-        <div class="process-step" data-aos="fade-up" data-aos-delay="200">
-          <div class="process-number">3</div>
-          <h3 class="process-title">Strateji Belirleme</h3>
-          <p class="process-desc">Size özel dava stratejisi ve şeffaf ücret anlaşması.</p>
-        </div>
-        <div class="process-step" data-aos="fade-up" data-aos-delay="250">
-          <div class="process-number">4</div>
-          <h3 class="process-title">Hukuki Süreç</h3>
-          <p class="process-desc">Davanızı baştan sona yönetir, sürekli bilgilendiririz.</p>
-        </div>
+  <!-- CTA SECTION -->
+  <section class="py-20 bg-gradient-navy text-white text-center">
+    <div class="container" style="max-width: 800px;">
+      <h2 class="text-white mb-4" style="color: white;">Hukuki Sorununuz İçin Ücretsiz Değerlendirme Alın</h2>
+      <p style="color: rgba(255,255,255,0.9); margin-bottom: 2rem;">İlk görüşme tamamen ücretsiz. Bugün bizi arayın,
+        hakkınızı birlikte koruyalım.</p>
+      <div class="flex justify-center gap-4 flex-wrap">
+        <a href="tel:02129876543" class="btn btn-gold btn-lg">Hemen Arayın: 0212 987 65 43</a>
+        <a href="contact.html" class="btn btn-outline btn-lg">Online Form Doldur</a>
       </div>
-    </div>
-  </section>
-
-  <!-- YORUMLAR -->
-  <section class="py-20 px-6 bg-gray-50">
-    <div class="container mx-auto max-w-6xl">
-      <h2 class="section-title" data-aos="fade-up">Müvekkillerimiz Ne Diyor?</h2>
-      <p class="text-center text-gold text-lg mb-12" data-aos="fade-up" data-aos-delay="100">⭐⭐⭐⭐⭐ 4.9/5 (Google Yorumları)</p>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="text-gold mb-3">⭐⭐⭐⭐⭐</div>
-          <p class="testimonial-text">"Av. Mehmet Bey'e iş davamda büyük destek oldu. Profesyonel yaklaşımı sayesinde hakkımı fazlasıyla aldım. Kesinlikle tavsiye ederim."</p>
-          <p class="testimonial-author">A.K. - İş Hukuku Danışanı</p>
-        </div>
-        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="150">
-          <div class="text-gold mb-3">⭐⭐⭐⭐⭐</div>
-          <p class="testimonial-text">"Boşanma sürecimde Av. Ayşe Hanım çok yardımcı oldu. Zorlu dönemde hem hukuki hem moral destek sağladı."</p>
-          <p class="testimonial-author">M.Y. - Aile Hukuku Danışanı</p>
-        </div>
-        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="text-gold mb-3">⭐⭐⭐⭐⭐</div>
-          <p class="testimonial-text">"Şirketimizin ticari davalarında güvenle çalıştığımız bir hukuk bürosu. Her konuda hızlı ve etkili çözümler sunuyorlar."</p>
-          <p class="testimonial-author">T.Ö. - Ticaret Hukuku Danışanı</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- İLETİŞİM -->
-  <section id="iletisim" class="py-20 px-6 bg-white">
-    <div class="container mx-auto max-w-6xl">
-      <h2 class="section-title" data-aos="fade-up">İletişime Geçin</h2>
-      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">İlk görüşme ücretsiz! Hukuki sorununuz için hemen bize ulaşın.</p>
-      <div class="grid lg:grid-cols-2 gap-12 mt-12">
-        <!-- Form -->
-        <div data-aos="fade-right">
-          <form id="contactForm" class="space-y-6">
-            <div>
-              <label for="name" class="form-label">Ad Soyad *</label>
-              <input type="text" id="name" name="name" class="form-input" placeholder="Adınız ve Soyadınız" required>
-              <p id="name-error" class="form-error hidden"></p>
-            </div>
-            <div>
-              <label for="phone" class="form-label">Telefon *</label>
-              <input type="tel" id="phone" name="phone" class="form-input" placeholder="05XX XXX XX XX" required>
-              <p id="phone-error" class="form-error hidden"></p>
-            </div>
-            <div>
-              <label for="email" class="form-label">E-posta *</label>
-              <input type="email" id="email" name="email" class="form-input" placeholder="ornek@email.com" required>
-              <p id="email-error" class="form-error hidden"></p>
-            </div>
-            <div>
-              <label for="subject" class="form-label">Konu *</label>
-              <select id="subject" name="subject" class="form-input" required>
-                <option value="">Konu Seçin</option>
-                <option value="is">İş Hukuku</option>
-                <option value="ceza">Ceza Hukuku</option>
-                <option value="aile">Aile Hukuku</option>
-                <option value="miras">Miras Hukuku</option>
-                <option value="gayrimenkul">Gayrimenkul Hukuku</option>
-                <option value="ticaret">Ticaret Hukuku</option>
-                <option value="diger">Diğer</option>
-              </select>
-              <p id="subject-error" class="form-error hidden"></p>
-            </div>
-            <div>
-              <label for="message" class="form-label">Mesajınız *</label>
-              <textarea id="message" name="message" rows="4" class="form-input" placeholder="Hukuki sorununuzu kısaca açıklayın..." required></textarea>
-              <p id="message-error" class="form-error hidden"></p>
-            </div>
-            <div class="flex items-start gap-3">
-              <input type="checkbox" id="kvkk" name="kvkk" class="mt-1 w-5 h-5 text-navy" required>
-              <label for="kvkk" class="text-sm text-gray-600">Kişisel verilerimin işlenmesine onay veriyorum. <a href="#" class="text-navy underline">Gizlilik Politikası</a></label>
-            </div>
-            <button type="submit" id="submitBtn" class="btn-primary w-full py-4 text-lg">Gönder</button>
-            <p id="form-success" class="text-green-600 font-medium hidden text-center">✓ Mesajınız alındı! En kısa sürede dönüş yapacağız.</p>
-          </form>
-        </div>
-        <!-- Info -->
-        <div data-aos="fade-left" class="space-y-8">
-          <div>
-            <h3 class="text-xl font-bold text-navy mb-6">İletişim Bilgileri</h3>
-            <div class="space-y-4">
-              <a href="tel:02129876543" class="flex items-center gap-4 text-gray-700 hover:text-navy transition">
-                <span class="w-12 h-12 bg-navy/10 rounded-full flex items-center justify-center text-navy">📞</span>
-                <span class="text-lg font-medium">0212 987 65 43</span>
-              </a>
-              <a href="mailto:info@yilmazhukuk.com" class="flex items-center gap-4 text-gray-700 hover:text-navy transition">
-                <span class="w-12 h-12 bg-navy/10 rounded-full flex items-center justify-center text-navy">✉️</span>
-                <span class="text-lg">info@yilmazhukuk.com</span>
-              </a>
-              <div class="flex items-start gap-4 text-gray-700">
-                <span class="w-12 h-12 bg-navy/10 rounded-full flex items-center justify-center text-navy flex-shrink-0">📍</span>
-                <span>Nispetiye Mah. Aytar Cad. No:12/5<br>Etiler, Beşiktaş / İstanbul</span>
-              </div>
-              <div class="flex items-center gap-4 text-gray-700">
-                <span class="w-12 h-12 bg-navy/10 rounded-full flex items-center justify-center text-navy">🕐</span>
-                <span>Pzt-Cuma: 09:00 - 18:00</span>
-              </div>
-            </div>
-          </div>
-          <div class="rounded-xl overflow-hidden shadow-lg">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.0763087614386!2d29.02651!3d41.07883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab7a29684cf63%3A0x4b77e8460ca9a98f!2sEtiler%2C%20Be%C5%9Fikta%C5%9F%2F%C4%B0stanbul!5e0!3m2!1str!2str!4v1699789456789!5m2!1str!2str" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA BANNER -->
-  <section class="py-16 px-6 bg-navy text-white text-center">
-    <div class="container mx-auto max-w-3xl" data-aos="fade-up">
-      <h2 class="text-2xl md:text-3xl font-serif font-bold mb-4">Hukuki Sorununuz İçin Profesyonel Destek</h2>
-      <p class="text-white/80 mb-8">İlk görüşme tamamen ücretsiz. Bugün bizi arayın, hakkınızı birlikte koruyalım.</p>
-      <a href="tel:02129876543" class="btn-gold text-lg px-10 py-4">Hemen Arayın: 0212 987 65 43</a>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="py-16 px-6 bg-gray-900 text-white">
-    <div class="container mx-auto max-w-6xl">
-      <div class="grid md:grid-cols-3 gap-12">
-        <div>
-          <div class="flex items-center gap-3 mb-6">
-            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-              <svg class="w-6 h-6 text-navy" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18l7 3.5v7.64l-7 3.5-7-3.5V7.68l7-3.5z"/></svg>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="navbar-logo mb-4">
+            <div class="logo-icon" style="background: white;">
+              <svg width="24" height="24" viewBox="0 0 48 48" fill="none" stroke="#0A1F44" stroke-width="2">
+                <path d="M24 4L4 14v4l20 10 20-10v-4L24 4z" />
+                <path d="M4 18v12l20 10 20-10V18" />
+              </svg>
             </div>
-            <span class="text-xl font-bold font-serif">Yılmaz Hukuk</span>
-          </div>
-          <p class="text-gray-400 mb-4">1998'den beri Türkiye'nin önde gelen hukuk bürolarından biri.</p>
-          <p class="text-gray-400 text-sm">İstanbul Barosu Kayıtlı<br>Sicil No: 24567</p>
+            <span class="logo-text" style="color: white;">Yılmaz Hukuk</span>
+          </a>
+          <p>1998'den beri Türkiye'nin önde gelen hukuk bürolarından biri.</p>
+          <p class="text-sm" style="color: var(--color-gray-500);">İstanbul Barosu Kayıtlı<br>Sicil No: 24567</p>
         </div>
+
         <div>
-          <h4 class="font-bold text-lg mb-6">Hızlı Erişim</h4>
-          <ul class="space-y-3 text-gray-400">
-            <li><a href="#ana-sayfa" class="hover:text-white transition">Ana Sayfa</a></li>
-            <li><a href="#uzmanlik" class="hover:text-white transition">Uzmanlık Alanları</a></li>
-            <li><a href="#avukatlar" class="hover:text-white transition">Avukatlarımız</a></li>
-            <li><a href="#iletisim" class="hover:text-white transition">İletişim</a></li>
-            <li><a href="#" class="hover:text-white transition">Gizlilik Politikası</a></li>
-            <li><a href="#" class="hover:text-white transition">KVKK Aydınlatma Metni</a></li>
-          </ul>
+          <h4 class="footer-title">Hızlı Erişim</h4>
+          <a href="index.html" class="footer-link">Ana Sayfa</a>
+          <a href="practice-areas.html" class="footer-link">Uzmanlık Alanları</a>
+          <a href="team.html" class="footer-link">Avukatlarımız</a>
+          <a href="blog.html" class="footer-link">Blog</a>
+          <a href="contact.html" class="footer-link">İletişim</a>
         </div>
+
         <div>
-          <h4 class="font-bold text-lg mb-6">Bizi Takip Edin</h4>
-          <div class="flex gap-4">
-            <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition" aria-label="LinkedIn">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-            </a>
-            <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition" aria-label="Twitter">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-            <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition" aria-label="Instagram">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            </a>
+          <h4 class="footer-title">Uzmanlık Alanları</h4>
+          <a href="is-hukuku.html" class="footer-link">İş Hukuku</a>
+          <a href="ceza-hukuku.html" class="footer-link">Ceza Hukuku</a>
+          <a href="aile-bosanma.html" class="footer-link">Aile & Boşanma</a>
+          <a href="miras-hukuku.html" class="footer-link">Miras Hukuku</a>
+          <a href="gayrimenkul-hukuku.html" class="footer-link">Gayrimenkul</a>
+        </div>
+
+        <div>
+          <h4 class="footer-title">İletişim</h4>
+          <a href="tel:02129876543" class="footer-link">0212 987 65 43</a>
+          <a href="mailto:info@yilmazhukuk.com" class="footer-link">info@yilmazhukuk.com</a>
+          <p class="footer-link">Nispetiye Mah. Aytar Cad. No:12/5<br>Etiler, Beşiktaş / İstanbul</p>
+          <div class="footer-social">
+            <a href="#" aria-label="LinkedIn"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+              </svg></a>
+            <a href="#" aria-label="Twitter"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg></a>
+            <a href="#" aria-label="Instagram"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              </svg></a>
           </div>
         </div>
       </div>
-      <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
-        <p>© 2026 Yılmaz Hukuk Bürosu. Tüm hakları saklıdır.</p>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Yılmaz Hukuk Bürosu. Tüm hakları saklıdır. | <a href="kvkk-aydinlatma-metni.html"
+            style="color: var(--color-gray-400);">KVKK</a> | <a href="gizlilik-politikasi.html"
+            style="color: var(--color-gray-400);">Gizlilik</a></p>
       </div>
     </div>
   </footer>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/905321234567?text=Merhaba, hukuki danışmanlık almak istiyorum" class="whatsapp-float"
+    target="_blank" aria-label="WhatsApp">
+    <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+  </a>
+
+  <!-- Cookie Banner -->
+  <div class="cookie-banner" id="cookie-banner">
+    <div class="cookie-content">
+      <p>Web sitemiz, size en iyi deneyimi sunabilmek için çerezler kullanmaktadır. <a
+          href="cerez-politikasi.html">Çerez Politikamız</a></p>
+      <div class="cookie-buttons">
+        <button class="btn btn-primary btn-sm" id="accept-cookies">Kabul Et</button>
+        <button class="btn btn-outline-navy btn-sm" id="reject-cookies">Reddet</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Sticky CTA -->
+  <div class="mobile-sticky-cta">
+    <a href="tel:02129876543">
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+        <path
+          d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+      </svg>
+      Hemen Ara: 0212 987 65 43
+    </a>
+  </div>
+
   <script src="script.js"></script>
 </body>
+
 </html>

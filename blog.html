@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hukuki Bilgi Merkezi | Yılmaz Hukuk Blog</title>
+    <meta name="description"
+        content="Güncel hukuki gelişmeler, rehberler ve uzman görüşleri. İş hukuku, ceza hukuku, aile hukuku makaleleri.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <div class="logo-icon">
+                    <svg width="28" height="28" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M24 4L4 14v4l20 10 20-10v-4L24 4z" />
+                        <path d="M4 18v12l20 10 20-10V18" />
+                    </svg>
+                </div>
+                <span class="logo-text">Yılmaz Hukuk</span>
+            </a>
+            <ul class="navbar-menu">
+                <li><a href="index.html" class="navbar-link">Ana Sayfa</a></li>
+                <li><a href="practice-areas.html" class="navbar-link">Uzmanlık Alanları</a></li>
+                <li><a href="team.html" class="navbar-link">Avukatlarımız</a></li>
+                <li><a href="blog.html" class="navbar-link">Blog</a></li>
+                <li><a href="contact.html" class="navbar-link">İletişim</a></li>
+            </ul>
+            <a href="contact.html" class="btn btn-primary navbar-cta">Ücretsiz Ön Görüşme</a>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menü">
+                <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 8h20M4 14h20M4 20h20" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobile-overlay"></div>
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="index.html" class="mobile-menu-link">Ana Sayfa</a>
+        <a href="practice-areas.html" class="mobile-menu-link">Uzmanlık Alanları</a>
+        <a href="team.html" class="mobile-menu-link">Avukatlarımız</a>
+        <a href="blog.html" class="mobile-menu-link">Blog</a>
+        <a href="about.html" class="mobile-menu-link">Hakkımızda</a>
+        <a href="contact.html" class="mobile-menu-link">İletişim</a>
+        <a href="contact.html" class="btn btn-gold mt-8">Ücretsiz Ön Görüşme</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="py-20 bg-navy text-white" style="padding-top: 120px;">
+        <div class="container text-center">
+            <h1 style="color: white; font-size: 3rem; margin-bottom: 1rem;">Hukuki Bilgi Merkezi</h1>
+            <p style="font-size: 1.25rem; color: rgba(255,255,255,0.9);">Güncel hukuki gelişmeler, rehberler ve uzman
+                görüşleri</p>
+        </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section class="section bg-white">
+        <div class="container">
+            <div class="grid md:grid-cols-3 gap-8">
+
+                <!-- Blog Post 1 -->
+                <article class="card">
+                    <div class="card-image" style="height: 200px;">
+                        <img src="images/is-hukuku.jpg" alt="İş Sözleşmesi Feshi" loading="lazy"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="card-body">
+                        <span class="text-sm text-gold font-semibold">İş Hukuku</span>
+                        <h3 class="mt-2 mb-3" style="font-size: 1.25rem;">2026'da İş Sözleşmesi Feshi: Bilmeniz Gereken
+                            Her Şey</h3>
+                        <p class="text-sm text-gray-600 mb-4">İş sözleşmeniz haksız yere mi feshedildi? Haklarınızı ve
+                            başvuru yollarınızı öğrenin.</p>
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <span>Av. Mehmet Yılmaz</span>
+                            <span>5 dk okuma</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 2 -->
+                <article class="card">
+                    <div class="card-image" style="height: 200px;">
+                        <img src="images/aile-hukuku.jpg" alt="Boşanma Süreci" loading="lazy"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="card-body">
+                        <span class="text-sm text-gold font-semibold">Aile Hukuku</span>
+                        <h3 class="mt-2 mb-3" style="font-size: 1.25rem;">Boşanma Davası Nasıl Açılır? Adım Adım Rehber
+                        </h3>
+                        <p class="text-sm text-gray-600 mb-4">Anlaşmalı ve çekişmeli boşanma süreçleri, gerekli belgeler
+                            ve dikkat edilmesi gerekenler.</p>
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <span>Av. Ayşe Kara</span>
+                            <span>8 dk okuma</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 3 -->
+                <article class="card">
+                    <div class="card-image" style="height: 200px;">
+                        <img src="images/miras-hukuku.jpg" alt="Miras Hakları" loading="lazy"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="card-body">
+                        <span class="text-sm text-gold font-semibold">Miras Hukuku</span>
+                        <h3 class="mt-2 mb-3" style="font-size: 1.25rem;">Miras Hakkınızı Korumak İçin 10 Önemli Adım
+                        </h3>
+                        <p class="text-sm text-gray-600 mb-4">Veraset işlemleri, saklı pay hakkı ve miras davalarında
+                            sık yapılan hatalar.</p>
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <span>Av. Emre Demir</span>
+                            <span>6 dk okuma</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 4 -->
+                <article class="card">
+                    <div class="card-image" style="height: 200px;">
+                        <img src="images/ceza-hukuku.jpg" alt="Ceza Davası" loading="lazy"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="card-body">
+                        <span class="text-sm text-gold font-semibold">Ceza Hukuku</span>
+                        <h3 class="mt-2 mb-3" style="font-size: 1.25rem;">Ceza Davasında Savunma Hakları</h3>
+                        <p class="text-sm text-gray-600 mb-4">Gözaltı, tutukluluk ve yargılama süreçlerinde anayasal
+                            haklarınız nelerdir?</p>
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <span>Av. Mehmet Yılmaz</span>
+                            <span>7 dk okuma</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 5 -->
+                <article class="card">
+                    <div class="card-image" style="height: 200px;">
+                        <img src="images/gayrimenkul-hukuku.jpg" alt="Gayrimenkul" loading="lazy"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="card-body">
+                        <span class="text-sm text-gold font-semibold">Gayrimenkul</span>
+                        <h3 class="mt-2 mb-3" style="font-size: 1.25rem;">Tapu İşlemlerinde Dikkat Edilmesi Gerekenler
+                        </h3>
+                        <p class="text-sm text-gray-600 mb-4">Ev alırken dolandırılmamak için kontrol etmeniz gereken 15
+                            kritik nokta.</p>
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <span>Av. Emre Demir</span>
+                            <span>10 dk okuma</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 6 -->
+                <article class="card">
+                    <div class="card-image" style="height: 200px;">
+                        <img src="images/ticaret-hukuku.jpg" alt="Ticaret Hukuku" loading="lazy"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="card-body">
+                        <span class="text-sm text-gold font-semibold">Ticaret Hukuku</span>
+                        <h3 class="mt-2 mb-3" style="font-size: 1.25rem;">Şirket Kuruluşunda Hukuki Süreç</h3>
+                        <p class="text-sm text-gray-600 mb-4">Limited ve anonim şirket kuruluşu, sermaye gereksinimleri
+                            ve yasal yükümlülükler.</p>
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <span>Av. Emre Demir</span>
+                            <span>9 dk okuma</span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section class="py-16 bg-gray-50 text-center">
+        <div class="container" style="max-width: 600px;">
+            <h2 class="mb-4">Hukuki Güncellemelerden Haberdar Olun</h2>
+            <p class="text-gray-600 mb-6">Her hafta güncel hukuki gelişmeleri e-posta kutunuza gönderelim.</p>
+            <form class="flex gap-3">
+                <input type="email" placeholder="E-posta adresiniz" class="form-input" style="flex: 1;">
+                <button type="submit" class="btn btn-primary">Abone Ol</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="border: none; padding: 0;">
+                <p>&copy; 2026 Yılmaz Hukuk Bürosu. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/905321234567" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
