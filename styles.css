@@ -2530,10 +2530,7 @@ select.form-input {
 
   /* WhatsApp Float */
   .whatsapp-float {
-    bottom: 80px;
-    right: var(--space-4);
-    width: 52px;
-    height: 52px;
+    display: none !important;
   }
 
   /* Cookie Banner */
