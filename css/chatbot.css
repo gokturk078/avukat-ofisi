@@ -1162,10 +1162,10 @@
 
 @media (max-width: 768px) {
 
-    /* Lift toggle button above sticky footer - Tight Fit */
+    /* Chatbot icon - Fixed to bottom right corner */
     #chatbot-container {
-        bottom: 75px;
-        right: 16px;
+        bottom: 16px !important;
+        right: 16px !important;
     }
 
     /* Critical Flex Fixes for Scroll/Overlap */
@@ -1194,13 +1194,13 @@
 
     .chatbot-window {
         position: fixed;
-        bottom: 75px;
-        right: 16px;
-        left: 16px;
-        width: auto !important;
-        height: calc(100vh - 100px);
-        height: calc(100dvh - 100px);
-        max-height: calc(100dvh - 100px);
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100% !important;
+        height: calc(100vh - 60px);
+        height: calc(100dvh - 60px);
+        max-height: calc(100dvh - 60px);
         overflow: hidden;
         display: flex;
         flex-direction: column;
