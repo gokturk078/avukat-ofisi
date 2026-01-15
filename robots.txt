@@ -1,0 +1,36 @@
+# Yılmaz Hukuk Bürosu - robots.txt
+# Son Güncelleme: 2026-01-15
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://yilmazhukuk.com/sitemap.xml
+
+# Tarama hızı (arama motorlarının siteyi çok hızlı taramasını önler)
+Crawl-delay: 1
+
+# Gereksiz dosyaları engelle
+Disallow: /js/
+Disallow: /css/
+Disallow: *.json$
+
+# İzin verilen botlar
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+# Kötü amaçlı botları engelle
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akıllı Sözleşmelerin Hukuki Geçerliliği | Yılmaz Hukuk</title>
+    <meta name="description"
+        content="Blockchain üzerindeki 'Smart Contract'lar mahkemede delil sayılır mı? 2026 Borçlar Kanunu ek maddeleri ve akıllı sözleşme uyuşmazlıkları.">
+    <link rel="canonical" href="https://yilmazhukuk.com/blog-akilli-sozlesmeler.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <style>
+        .reading-progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            z-index: 1001;
+        }
+
+        .reading-progress-bar {
+            height: 100%;
+            background: var(--color-gold);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        .blog-header {
+            background: linear-gradient(135deg, var(--color-navy-dark) 0%, var(--color-navy) 100%);
+            padding: 160px 0 80px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2000&auto=format&fit=crop') center/cover;
+            opacity: 0.15;
+            mix-blend-mode: overlay;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .blog-category {
+            background: var(--color-gold);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .blog-title {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            font-family: var(--font-display);
+        }
+
+        .blog-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 4rem;
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .blog-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--color-gray-700);
+        }
+
+        .blog-content h2 {
+            font-size: 1.75rem;
+            color: var(--color-navy);
+            margin: 2.5rem 0 1rem;
+            font-family: var(--font-display);
+        }
+
+        .blog-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-content ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .blog-content li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .blog-content blockquote {
+            border-left: 4px solid var(--color-gold);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--color-navy);
+            font-style: italic;
+            background: var(--color-gray-50);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .blog-sidebar {
+            position: sticky;
+            top: 120px;
+            align-self: start;
+        }
+
+        .sidebar-widget {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--color-gray-100);
+        }
+
+        .sidebar-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-navy);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-gray-100);
+        }
+
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc-list li {
+            margin-bottom: 0.75rem;
+        }
+
+        .toc-list a {
+            color: var(--color-gray-600);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+            display: block;
+            padding-left: 10px;
+            border-left: 2px solid transparent;
+        }
+
+        .toc-list a:hover,
+        .toc-list a.active {
+            color: var(--color-gold);
+            border-left-color: var(--color-gold);
+        }
+
+        .author-card {
+            text-align: center;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid var(--color-gold);
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .share-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .share-btn.linkedin {
+            background: #0077b5;
+        }
+
+        .share-btn.twitter {
+            background: #000000;
+        }
+
+        .share-btn.whatsapp {
+            background: #25D366;
+        }
+
+        @media (max-width: 1024px) {
+            .blog-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .blog-sidebar {
+                position: static;
+                order: 2;
+            }
+
+            .blog-title {
+                font-size: 2.25rem;
+            }
+
+            .blog-content {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .blog-header {
+                padding: 120px 0 60px;
+            }
+
+            .blog-title {
+                font-size: 1.75rem;
+            }
+
+            .blog-content {
+                padding: 1.5rem;
+            }
+
+            .blog-layout {
+                margin-top: -40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reading-progress-container">
+        <div class="reading-progress-bar" id="readingProgress"></div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <img src="images/logo.png" alt="Yılmaz Hukuk Logo" class="logo-image">
+                <span class="logo-text">Yılmaz Hukuk</span>
+            </a>
+            <ul class="navbar-menu">
+                <li><a href="index.html" class="navbar-link">Ana Sayfa</a></li>
+                <li><a href="practice-areas.html" class="navbar-link">Uzmanlık Alanları</a></li>
+                <li><a href="blog.html" class="navbar-link active">Blog</a></li>
+                <li><a href="contact.html" class="navbar-link">İletişim</a></li>
+            </ul>
+            <a href="contact.html" class="btn btn-primary navbar-cta">Ücretsiz Ön Görüşme</a>
+            <button class="mobile-menu-btn" id="mobile-menu-btn"><svg width="28" height="28" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <path d="M4 8h20M4 14h20M4 20h20" />
+                </svg></button>
+        </div>
+    </nav>
+    <div class="mobile-menu-overlay" id="mobile-overlay"></div>
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="index.html" class="mobile-menu-link">Ana Sayfa</a>
+        <a href="blog.html" class="mobile-menu-link">Blog</a>
+        <a href="contact.html" class="mobile-menu-link">İletişim</a>
+    </div>
+
+    <header class="blog-header">
+        <div class="container">
+            <div class="blog-meta">
+                <span class="blog-category">Ticaret Hukuku</span>
+                <span>•</span>
+                <span>30 Ocak 2026</span>
+                <span>•</span>
+                <span>7 dk okuma</span>
+            </div>
+            <h1 class="blog-title">Akıllı Sözleşmelerin (Smart Contracts) Borçlar Kanunu Kapsamında Geçerliliği</h1>
+            <p style="font-size: 1.1rem; max-width: 800px; opacity: 0.9;">"Code is Law" felsefesi Türk hukukunda ne
+                kadar geçerli? Blockchain tabanlı sözleşmelerin yasal statüsü ve mahkemelerdeki delil niteliği.</p>
+        </div>
+    </header>
+
+    <section class="section bg-gray-50" style="padding-top: 0;">
+        <div class="container">
+            <div class="blog-layout">
+                <article class="blog-content">
+                    <p class="lead" style="font-size: 1.25rem; font-weight: 500; color: var(--color-navy);">Geleneksel
+                        kağıt sözleşmelerin yerini, kod satırlarından oluşan ve kendi kendini icra eden (self-executing)
+                        "Akıllı Sözleşmeler" almaya başladı. Peki bir yazılım kodu, Borçlar Kanunu'ndaki "irade beyanı"
+                        olabilir mi?</p>
+
+                    <h2 id="akilli-sozlesme-nedir">1. Kod Kanun Mudur?</h2>
+                    <p>Akıllı sözleşmeler, belirli şartlar gerçekleştiğinde (örneğin: mal limana ulaştığında) ödemeyi
+                        otomatik olarak serbest bırakan yazılımlardır. 2026 Borçlar Kanunu tadilatı ile, "dijital
+                        ortamda güvenli elektronik imza veya blokzincir onayı ile kurulan sözleşmeler" yazılı şekil
+                        şartını sağlamış sayılmaktadır.</p>
+
+                    <h2 id="borclar-kanunu">2. İrade Uyuşmazlığı ve Hata</h2>
+                    <p>Yazılımda bir "bug" (hata) olması durumunda ne olur? Kod, sözleşmenin bir tarafını haksız yere
+                        borçlandırabilir.</p>
+                    <blockquote>
+                        "Yazılım hatası, sözleşme hatası sayılır."
+                    </blockquote>
+                    <p>Türk mahkemeleri, kodun amaçlanan iradeyi yansıtmadığı durumlarda, tarafların gerçek niyetini (BK
+                        m.19) esas alma eğilimindedir. Yani "Code is Law" mutlak değildir; "Law is Law" ilkesi
+                        geçerliliğini korur.</p>
+
+                    <h2 id="delil-niteligi">3. Mahkemede Delil Niteliği</h2>
+                    <p>HMK m. 199 kapsamında elektronik veriler zaten belge niteliğindeydi. 2026'da yapılan
+                        değişiklikle, "TimeStamp" (zaman damgası) içeren blokzincir kayıtları, aksi ispat edilene kadar
+                        <strong>kesin delil</strong> statüsüne yükseltildi.
+                    </p>
+
+                    <h2 id="ne-yapilmali">4. Akıllı Sözleşme Kullanırken Dikkat</h2>
+                    <ol>
+                        <li>Mutlaka bir "Doğal Dil" (Natural Language) sözleşmesi de imzalayın ve kod ile çelişki
+                            durumunda hangisinin üstün olacağını belirtin.</li>
+                        <li>Sözleşme kodunu bağımsız denetçilere (Audit firmaları) test ettirin.</li>
+                        <li>Yargı yetkisi ve uygulanacak hukuku (Choice of Law) kodun içine değil, ana sözleşmeye yazın.
+                        </li>
+                    </ol>
+
+                    <h2 id="sonuc">Sonuç</h2>
+                    <p>Akıllı sözleşmeler ticareti hızlandırır ancak riski sıfırlamaz. Hibrit sözleşme modelleri (Kod +
+                        Geleneksel) şu an için en güvenli yoldur.</p>
+                </article>
+
+                <aside class="blog-sidebar">
+                    <div class="sidebar-widget author-card">
+                        <img src="images/team-2.jpg" alt="Av. Emre Demir" class="author-avatar"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Emre+Demir&background=C5A572&color=fff'">
+                        <h4 style="margin-bottom: 0.5rem; color: var(--color-navy);">Av. Emre Demir</h4>
+                        <p style="font-size: 0.9rem; color: var(--color-gray-600); margin-bottom: 1rem;">Bilişim Hukuku
+                            Uzmanı</p>
+                        <a href="contact.html" class="btn btn-outline-navy btn-sm" style="width: 100%;">Danışmanlık
+                            Al</a>
+                    </div>
+                    <div class="sidebar-widget">
+                        <h3 class="sidebar-title">İçindekiler</h3>
+                        <ul class="toc-list">
+                            <li><a href="#akilli-sozlesme-nedir">Kod Kanun Mudur?</a></li>
+                            <li><a href="#borclar-kanunu">İrade Uyuşmazlığı</a></li>
+                            <li><a href="#delil-niteligi">Delil Niteliği</a></li>
+                            <li><a href="#ne-yapilmali">Dikkat Edilmesi Gerekenler</a></li>
+                            <li><a href="#sonuc">Sonuç</a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="border: none; padding: 2rem 0;">
+                <p>&copy; 2026 Yılmaz Hukuk Bürosu. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/common.js"></script>
+    <script>
+        window.onscroll = function () {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("readingProgress").style.width = scrolled + "%";
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    document.querySelectorAll('.toc-list a').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href').substring(1) === entry.target.id) { link.classList.add('active'); }
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('h2[id]').forEach(section => { observer.observe(section); });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Randevu | Yılmaz Hukuk Bürosu</title>
+    <meta name="description"
+        content="Yılmaz Hukuk Bürosu online randevu sistemi. Avukatlarımızla ücretsiz ön görüşme için hemen randevu alın.">
+    <link rel="canonical" href="https://yilmazhukuk.com/randevu.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <style>
+        /* Randevu Page Specific Styles */
+        .randevu-hero {
+            background: linear-gradient(135deg, var(--color-navy-dark) 0%, var(--color-navy) 50%, var(--color-navy-light) 100%);
+            padding: 140px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .randevu-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(197, 165, 114, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .randevu-hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .randevu-hero h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .randevu-hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-badge-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+        }
+
+        .hero-badge-item svg {
+            color: var(--color-gold);
+        }
+
+        /* Main Content Split Layout */
+        .randevu-content {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        @media (max-width: 1024px) {
+            .randevu-content {
+                grid-template-columns: 1fr;
+            }
+
+            .randevu-sidebar {
+                order: -1;
+            }
+        }
+
+        /* Progress Steps */
+        .progress-steps {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .progress-steps::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            left: 25%;
+            right: 25%;
+            height: 2px;
+            background: var(--color-gray-200);
+            z-index: 0;
+        }
+
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            max-width: 180px;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--color-gray-200);
+            color: var(--color-gray-500);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active .step-number {
+            background: var(--color-gold);
+            color: white;
+        }
+
+        .progress-step.completed .step-number {
+            background: var(--color-emerald);
+            color: white;
+        }
+
+        .step-label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--color-gray-500);
+            text-align: center;
+        }
+
+        .progress-step.active .step-label,
+        .progress-step.completed .step-label {
+            color: var(--color-navy);
+        }
+
+        /* Practice Area Cards */
+        .area-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        @media (max-width: 640px) {
+            .area-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .area-card {
+            background: white;
+            border: 2px solid var(--color-gray-200);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .area-card:hover {
+            border-color: var(--color-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .area-card.selected {
+            border-color: var(--color-gold);
+            background: rgba(197, 165, 114, 0.05);
+            box-shadow: 0 0 0 3px rgba(197, 165, 114, 0.2);
+        }
+
+        .area-card input {
+            display: none;
+        }
+
+        .area-card-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 0.75rem;
+            background: var(--color-gray-100);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-navy);
+            transition: all 0.3s ease;
+        }
+
+        .area-card.selected .area-card-icon {
+            background: var(--color-gold);
+            color: white;
+        }
+
+        .area-card-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--color-navy);
+        }
+
+        /* Meeting Type Cards */
+        .meeting-type-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .meeting-card {
+            background: white;
+            border: 2px solid var(--color-gray-200);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .meeting-card:hover {
+            border-color: var(--color-navy);
+        }
+
+        .meeting-card.selected {
+            border-color: var(--color-navy);
+            background: rgba(10, 31, 68, 0.03);
+        }
+
+        .meeting-card input {
+            display: none;
+        }
+
+        .meeting-card svg {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 0.5rem;
+            color: var(--color-gray-500);
+        }
+
+        .meeting-card.selected svg {
+            color: var(--color-navy);
+        }
+
+        .meeting-card span {
+            display: block;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        /* Sidebar */
+        .randevu-sidebar {
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar-card {
+            background: linear-gradient(180deg, var(--color-navy-dark) 0%, var(--color-navy) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            color: white;
+        }
+
+        .sidebar-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar-benefits {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-benefit {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-benefit:last-child {
+            border-bottom: none;
+        }
+
+        .benefit-icon {
+            width: 24px;
+            height: 24px;
+            color: var(--color-gold);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .benefit-text {
+            flex: 1;
+        }
+
+        .benefit-text strong {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .benefit-text span {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .sidebar-contact {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-contact p {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-phone {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-gold);
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        /* Form Styles */
+        .form-section {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--color-navy);
+        }
+
+        .form-section-title svg {
+            color: var(--color-gold);
+        }
+
+        /* Premium Footer for this page */
+        .page-footer {
+            background: var(--color-gray-50);
+            padding: 3rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .page-footer p {
+            color: var(--color-gray-500);
+            margin: 0;
+        }
+
+        /* ===== MOBILE RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .randevu-hero {
+                padding: 100px 0 50px;
+            }
+
+            .randevu-hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .randevu-hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-badges {
+                gap: 1rem;
+            }
+
+            .hero-badge-item {
+                font-size: 0.85rem;
+            }
+
+            .progress-steps {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+
+            .progress-steps::before {
+                display: none;
+            }
+
+            .progress-step {
+                flex-direction: row;
+                max-width: none;
+                justify-content: flex-start;
+                gap: 1rem;
+            }
+
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+                margin-bottom: 0;
+            }
+
+            .step-label {
+                text-align: left;
+            }
+
+            .area-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .meeting-type-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .form-section {
+                padding: 1.25rem;
+            }
+
+            .sidebar-card {
+                padding: 1.5rem;
+            }
+
+            .sidebar-title {
+                font-size: 1.25rem;
+            }
+
+            .randevu-sidebar {
+                position: static;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .randevu-hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-badges {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .form-section-title {
+                font-size: 1rem;
+            }
+
+            .form-label {
+                font-size: 0.9rem;
+            }
+
+            .page-footer {
+                padding: 2rem 0;
+                margin-top: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR (Synced with index.html) -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <img src="images/logo.png" alt="Yılmaz Hukuk Logo" class="logo-image">
+                <span class="logo-text">Yılmaz Hukuk</span>
+            </a>
+            <ul class="navbar-menu">
+                <li><a href="index.html" class="navbar-link">Ana Sayfa</a></li>
+                <li><a href="practice-areas.html" class="navbar-link">Uzmanlık Alanları</a></li>
+                <li class="navbar-item">
+                    <a href="#" class="navbar-link">Hizmetler ▾</a>
+                    <div class="navbar-dropdown">
+                        <a href="randevu.html" class="dropdown-item">
+                            <span class="dropdown-icon">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                    <line x1="16" y1="2" x2="16" y2="6" />
+                                    <line x1="8" y1="2" x2="8" y2="6" />
+                                    <line x1="3" y1="10" x2="21" y2="10" />
+                                </svg>
+                            </span>
+                            <span class="dropdown-text">
+                                <span class="dropdown-title">Online Randevu</span>
+                                <span class="dropdown-desc">Hemen randevu alın</span>
+                            </span>
+                        </a>
+                        <a href="ucret-hesaplayici.html" class="dropdown-item">
+                            <span class="dropdown-icon">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <rect x="4" y="2" width="16" height="20" rx="2" />
+                                    <line x1="8" y1="6" x2="16" y2="6" />
+                                    <line x1="8" y1="10" x2="16" y2="10" />
+                                    <line x1="8" y1="14" x2="12" y2="14" />
+                                </svg>
+                            </span>
+                            <span class="dropdown-text">
+                                <span class="dropdown-title">Ücret Hesaplayıcı</span>
+                                <span class="dropdown-desc">Tahmini ücret öğrenin</span>
+                            </span>
+                        </a>
+                        <a href="sss.html" class="dropdown-item">
+                            <span class="dropdown-icon">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                                    <line x1="12" y1="17" x2="12.01" y2="17" />
+                                </svg>
+                            </span>
+                            <span class="dropdown-text">
+                                <span class="dropdown-title">SSS</span>
+                                <span class="dropdown-desc">Sıkça sorulan sorular</span>
+                            </span>
+                        </a>
+                    </div>
+                </li>
+                <li><a href="team.html" class="navbar-link">Avukatlarımız</a></li>
+                <li><a href="contact.html" class="navbar-link">İletişim</a></li>
+            </ul>
+            <a href="randevu.html" class="btn btn-gold navbar-cta">Online Randevu</a>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menü">
+                <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 8h20M4 14h20M4 20h20" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu-overlay" id="mobile-overlay"></div>
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="index.html" class="mobile-menu-link">Ana Sayfa</a>
+        <a href="practice-areas.html" class="mobile-menu-link">Uzmanlık Alanları</a>
+        <a href="randevu.html" class="mobile-menu-link">Online Randevu</a>
+        <a href="ucret-hesaplayici.html" class="mobile-menu-link">Ücret Hesaplayıcı</a>
+        <a href="sss.html" class="mobile-menu-link">SSS</a>
+        <a href="team.html" class="mobile-menu-link">Avukatlarımız</a>
+        <a href="contact.html" class="mobile-menu-link">İletişim</a>
+        <a href="randevu.html" class="btn btn-gold mt-8">Randevu Al</a>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="randevu-hero">
+        <div class="container">
+            <div class="randevu-hero-content">
+                <h1>Online Randevu Alın</h1>
+                <p class="randevu-hero-subtitle">Uzman avukatlarımızla 30 dakika ücretsiz ön görüşme için hemen randevu
+                    oluşturun</p>
+                <div class="hero-badges">
+                    <div class="hero-badge-item">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <span>İlk görüşme ücretsiz</span>
+                    </div>
+                    <div class="hero-badge-item">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <span>Avukat-müvekkil gizliliği</span>
+                    </div>
+                    <div class="hero-badge-item">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <span>24 saat içinde dönüş</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <section class="section bg-gray-50">
+        <div class="container">
+            <!-- Progress Steps -->
+            <div class="progress-steps">
+                <div class="progress-step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Hukuk Alanı</div>
+                </div>
+                <div class="progress-step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Tarih & Saat</div>
+                </div>
+                <div class="progress-step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Bilgileriniz</div>
+                </div>
+            </div>
+
+            <div class="randevu-content">
+                <!-- Form Area -->
+                <div class="randevu-form-area">
+                    <form id="appointmentForm">
+                        <!-- Step 1: Practice Area -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">
+                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                </svg>
+                                Hukuk Alanı Seçin
+                            </h3>
+                            <div class="area-cards">
+                                <label class="area-card" onclick="selectArea(this)">
+                                    <input type="radio" name="area" value="is" required>
+                                    <div class="area-card-icon">
+                                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                                            viewBox="0 0 24 24">
+                                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                                        </svg>
+                                    </div>
+                                    <div class="area-card-title">İş Hukuku</div>
+                                </label>
+                                <label class="area-card" onclick="selectArea(this)">
+                                    <input type="radio" name="area" value="ceza">
+                                    <div class="area-card-icon">
+                                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                                            viewBox="0 0 24 24">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <line x1="12" y1="8" x2="12" y2="12" />
+                                            <line x1="12" y1="16" x2="12.01" y2="16" />
+                                        </svg>
+                                    </div>
+                                    <div class="area-card-title">Ceza Hukuku</div>
+                                </label>
+                                <label class="area-card" onclick="selectArea(this)">
+                                    <input type="radio" name="area" value="aile">
+                                    <div class="area-card-icon">
+                                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                                            viewBox="0 0 24 24">
+                                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                            <circle cx="9" cy="7" r="4" />
+                                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                        </svg>
+                                    </div>
+                                    <div class="area-card-title">Aile Hukuku</div>
+                                </label>
+                                <label class="area-card" onclick="selectArea(this)">
+                                    <input type="radio" name="area" value="miras">
+                                    <div class="area-card-icon">
+                                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                                            viewBox="0 0 24 24">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                            <polyline points="14 2 14 8 20 8" />
+                                            <line x1="16" y1="13" x2="8" y2="13" />
+                                            <line x1="16" y1="17" x2="8" y2="17" />
+                                        </svg>
+                                    </div>
+                                    <div class="area-card-title">Miras Hukuku</div>
+                                </label>
+                                <label class="area-card" onclick="selectArea(this)">
+                                    <input type="radio" name="area" value="gayrimenkul">
+                                    <div class="area-card-icon">
+                                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                                            viewBox="0 0 24 24">
+                                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                            <polyline points="9 22 9 12 15 12 15 22" />
+                                        </svg>
+                                    </div>
+                                    <div class="area-card-title">Gayrimenkul</div>
+                                </label>
+                                <label class="area-card" onclick="selectArea(this)">
+                                    <input type="radio" name="area" value="ticaret">
+                                    <div class="area-card-icon">
+                                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                                            viewBox="0 0 24 24">
+                                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+                                            <line x1="1" y1="10" x2="23" y2="10" />
+                                        </svg>
+                                    </div>
+                                    <div class="area-card-title">Ticaret Hukuku</div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Date & Time -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">
+                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                    <line x1="16" y1="2" x2="16" y2="6" />
+                                    <line x1="8" y1="2" x2="8" y2="6" />
+                                    <line x1="3" y1="10" x2="21" y2="10" />
+                                </svg>
+                                Tarih ve Saat Seçin
+                            </h3>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                <div class="form-group">
+                                    <label class="form-label">Tercih Edilen Tarih *</label>
+                                    <input type="date" class="form-input" id="appointment-date" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Tercih Edilen Saat *</label>
+                                    <select class="form-input" id="appointment-time" required>
+                                        <option value="">Saat Seçin</option>
+                                        <option value="09:00">09:00</option>
+                                        <option value="10:00">10:00</option>
+                                        <option value="11:00">11:00</option>
+                                        <option value="14:00">14:00</option>
+                                        <option value="15:00">15:00</option>
+                                        <option value="16:00">16:00</option>
+                                        <option value="17:00">17:00</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <h4 style="margin: 1.5rem 0 1rem; font-size: 1rem;">Görüşme Türü</h4>
+                            <div class="meeting-type-cards">
+                                <label class="meeting-card selected" onclick="selectMeeting(this)">
+                                    <input type="radio" name="type" value="ofis" checked>
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+                                        <line x1="1" y1="10" x2="23" y2="10" />
+                                    </svg>
+                                    <span>Ofiste Görüşme</span>
+                                </label>
+                                <label class="meeting-card" onclick="selectMeeting(this)">
+                                    <input type="radio" name="type" value="video">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <polygon points="23 7 16 12 23 17 23 7" />
+                                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                                    </svg>
+                                    <span>Video Görüşme</span>
+                                </label>
+                                <label class="meeting-card" onclick="selectMeeting(this)">
+                                    <input type="radio" name="type" value="telefon">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path
+                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                                    </svg>
+                                    <span>Telefon Görüşme</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Personal Info -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">
+                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                    <circle cx="12" cy="7" r="4" />
+                                </svg>
+                                Kişisel Bilgileriniz
+                            </h3>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                <div class="form-group">
+                                    <label class="form-label">Ad Soyad *</label>
+                                    <input type="text" class="form-input" required placeholder="Tam adınız">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Telefon *</label>
+                                    <input type="tel" class="form-input" required placeholder="05XX XXX XX XX">
+                                </div>
+                            </div>
+                            <div class="form-group mt-4">
+                                <label class="form-label">E-posta *</label>
+                                <input type="email" class="form-input" required placeholder="ornek@email.com">
+                            </div>
+                            <div class="form-group mt-4">
+                                <label class="form-label">Kısa Açıklama (Opsiyonel)</label>
+                                <textarea class="form-input" rows="3"
+                                    placeholder="Konunuzla ilgili kısa bilgi..."></textarea>
+                            </div>
+                            <div class="form-checkbox mt-6">
+                                <input type="checkbox" id="kvkk-randevu" required>
+                                <label for="kvkk-randevu"><a href="kvkk-aydinlatma-metni.html">KVKK Aydınlatma
+                                        Metni</a>'ni okudum ve kabul ediyorum.</label>
+                            </div>
+                            <button type="submit" class="btn btn-gold btn-lg w-full mt-6">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                    <line x1="16" y1="2" x2="16" y2="6" />
+                                    <line x1="8" y1="2" x2="8" y2="6" />
+                                    <line x1="3" y1="10" x2="21" y2="10" />
+                                    <path d="M9 16l2 2 4-4" />
+                                </svg>
+                                Randevu Oluştur
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="randevu-sidebar">
+                    <div class="sidebar-card">
+                        <h3 class="sidebar-title">Neden Bizi Seçmelisiniz?</h3>
+                        <ul class="sidebar-benefits">
+                            <li class="sidebar-benefit">
+                                <svg class="benefit-icon" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                                </svg>
+                                <div class="benefit-text">
+                                    <strong>İlk Görüşme Ücretsiz</strong>
+                                    <span>30 dakikalık ön değerlendirme herhangi bir ücret talep edilmez</span>
+                                </div>
+                            </li>
+                            <li class="sidebar-benefit">
+                                <svg class="benefit-icon" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                </svg>
+                                <div class="benefit-text">
+                                    <strong>Mutlak Gizlilik</strong>
+                                    <span>Avukat-müvekkil sırrı yasayla korunmaktadır</span>
+                                </div>
+                            </li>
+                            <li class="sidebar-benefit">
+                                <svg class="benefit-icon" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polyline points="12 6 12 12 16 14" />
+                                </svg>
+                                <div class="benefit-text">
+                                    <strong>Hızlı Dönüş</strong>
+                                    <span>24 saat içinde size ulaşıyoruz</span>
+                                </div>
+                            </li>
+                            <li class="sidebar-benefit">
+                                <svg class="benefit-icon" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                    <polyline points="22 4 12 14.01 9 11.01" />
+                                </svg>
+                                <div class="benefit-text">
+                                    <strong>%95 Başarı Oranı</strong>
+                                    <span>5000+ davada kanıtlanmış deneyim</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="sidebar-contact">
+                            <p>Acil durum için hemen arayın:</p>
+                            <a href="tel:02129876543" class="sidebar-phone">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                                </svg>
+                                0212 987 65 43
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <div class="container">
+            <p>&copy; 2026 Yılmaz Hukuk Bürosu. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/905321234567?text=Merhaba, randevu almak istiyorum" class="whatsapp-float" target="_blank"
+        aria-label="WhatsApp">
+        <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+        </svg>
+    </a>
+
+    <script>
+        // Set minimum date to today
+        document.getElementById('appointment-date').min = new Date().toISOString().split('T')[0];
+
+        // Area card selection
+        function selectArea(card) {
+            document.querySelectorAll('.area-card').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            card.querySelector('input').checked = true;
+        }
+
+        // Meeting type selection
+        function selectMeeting(card) {
+            document.querySelectorAll('.meeting-card').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            card.querySelector('input').checked = true;
+        }
+
+        // Form submission
+        document.getElementById('appointmentForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Randevunuz başarıyla oluşturuldu! En kısa sürede size dönüş yapacağız.');
+        });
+    </script>
+
+    <script src="script.js"></script>
+    <script src="js/common.js"></script>
+</body>
+
+</html>

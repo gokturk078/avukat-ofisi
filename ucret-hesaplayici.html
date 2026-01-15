@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ücret Hesaplayıcı | Yılmaz Hukuk Bürosu</title>
+    <meta name="description"
+        content="Avukatlık ücreti hesaplama aracı. Dava türüne göre tahmini avukatlık ücretini öğrenin.">
+    <link rel="canonical" href="https://yilmazhukuk.com/ucret-hesaplayici.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <style>
+        /* GLOBAL MOBILE RESET - Prevent horizontal overflow */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow-x: hidden;
+        }
+
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 100%;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            margin: 0 auto;
+        }
+
+        /* Calculator Page Specific Styles */
+        .calculator-hero {
+            background: linear-gradient(135deg, var(--color-navy-dark) 0%, var(--color-navy) 50%, var(--color-navy-light) 100%);
+            padding: 140px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .calculator-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(197, 165, 114, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .calculator-hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .calculator-hero h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .calculator-hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        /* Split Layout */
+        .calculator-content {
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 3rem;
+            align-items: start;
+            max-width: 100%;
+        }
+
+        @media (max-width: 1024px) {
+            .calculator-content {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .calculator-content {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+        }
+
+        /* Calculator Form */
+        .calculator-form {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            padding: 2rem;
+        }
+
+        .form-section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--color-navy);
+        }
+
+        .form-section-title svg {
+            color: var(--color-gold);
+        }
+
+        /* Case Type Visual Selector */
+        .case-type-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 480px) {
+            .case-type-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        .case-type-card {
+            background: white;
+            border: 2px solid var(--color-gray-200);
+            border-radius: 12px;
+            padding: 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .case-type-card:hover {
+            border-color: var(--color-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .case-type-card.selected {
+            border-color: var(--color-gold);
+            background: rgba(197, 165, 114, 0.05);
+            box-shadow: 0 0 0 3px rgba(197, 165, 114, 0.2);
+        }
+
+        .case-type-card input {
+            display: none;
+        }
+
+        .case-type-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .case-type-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--color-gray-100);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-navy);
+            transition: all 0.3s ease;
+        }
+
+        .case-type-card.selected .case-type-icon {
+            background: var(--color-gold);
+            color: white;
+        }
+
+        .case-type-title {
+            font-weight: 600;
+            color: var(--color-navy);
+        }
+
+        .case-type-desc {
+            font-size: 0.85rem;
+            color: var(--color-gray-500);
+            margin-left: 52px;
+        }
+
+        /* Case Subtype Dropdown */
+        .case-subtype-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--color-gray-50);
+            border-radius: 12px;
+            display: none;
+        }
+
+        .case-subtype-section.active {
+            display: block;
+        }
+
+        .complexity-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+            max-width: 100%;
+            width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .complexity-grid {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 0.75rem !important;
+                width: 100% !important;
+            }
+        }
+
+        .complexity-card {
+            background: white;
+            border: 2px solid var(--color-gray-200);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 768px) {
+            .complexity-card {
+                width: 100% !important;
+                min-width: auto !important;
+            }
+        }
+
+        .complexity-card:hover {
+            border-color: var(--color-navy);
+        }
+
+        .complexity-card.selected {
+            border-color: var(--color-navy);
+            background: rgba(10, 31, 68, 0.03);
+        }
+
+        .complexity-card input {
+            display: none;
+        }
+
+        .complexity-level {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-navy);
+        }
+
+        .complexity-card.low .complexity-level {
+            color: var(--color-emerald);
+        }
+
+        .complexity-card.medium .complexity-level {
+            color: var(--color-gold);
+        }
+
+        .complexity-card.high .complexity-level {
+            color: #EF4444;
+        }
+
+        .complexity-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .complexity-desc {
+            font-size: 0.8rem;
+            color: var(--color-gray-500);
+        }
+
+        /* Result Card */
+        .result-sidebar {
+            position: sticky;
+            top: 100px;
+        }
+
+        .result-card {
+            background: linear-gradient(180deg, var(--color-navy-dark) 0%, var(--color-navy) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .result-title {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-gold);
+            margin-bottom: 1rem;
+        }
+
+        .result-fee-range {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            min-height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .result-fee-range.placeholder {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1.25rem;
+        }
+
+        .result-disclaimer {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .result-includes {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        .result-includes-title {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .result-includes-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .result-includes-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .result-includes-list svg {
+            color: var(--color-gold);
+            flex-shrink: 0;
+        }
+
+        .result-cta {
+            display: block;
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: var(--color-gold);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .result-cta:hover {
+            background: #B8996A;
+            transform: translateY(-2px);
+        }
+
+        /* Info Cards */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            display: flex;
+            gap: 1rem;
+        }
+
+        .info-card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--color-gray-100);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-navy);
+            flex-shrink: 0;
+        }
+
+        .info-card-content h4 {
+            margin-bottom: 0.5rem;
+            color: var(--color-navy);
+        }
+
+        .info-card-content p {
+            font-size: 0.9rem;
+            color: var(--color-gray-600);
+            margin: 0;
+        }
+
+        /* Warning Banner */
+        .warning-banner {
+            background: linear-gradient(90deg, #FEF3C7 0%, #FDE68A 100%);
+            border-left: 4px solid #F59E0B;
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .warning-banner svg {
+            color: #D97706;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .warning-banner p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #92400E;
+        }
+
+        /* Page Footer */
+        .page-footer {
+            background: var(--color-gray-50);
+            padding: 3rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .page-footer p {
+            color: var(--color-gray-500);
+            margin: 0;
+        }
+
+        /* ===== MOBILE RESPONSIVE ===== */
+
+        /* Prevent horizontal overflow */
+        html,
+        body {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
+        .container {
+            max-width: 100%;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            box-sizing: border-box;
+        }
+
+        .calculator-content {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .calculator-form {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 768px) {
+            .calculator-hero {
+                padding: 100px 0 50px;
+            }
+
+            .calculator-hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .calculator-hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .calculator-form {
+                padding: 1.25rem;
+                max-width: 100%;
+            }
+
+            .case-type-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 100%;
+            }
+
+            .case-type-card {
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+
+            .result-sidebar {
+                position: static;
+                margin-top: 2rem;
+                max-width: 100%;
+            }
+
+            .result-card {
+                padding: 1.5rem;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+
+            .result-fee-range {
+                font-size: 1.5rem;
+                word-break: break-word;
+            }
+
+            .warning-banner {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+
+            .warning-banner svg {
+                margin: 0 auto;
+            }
+
+            .info-card {
+                flex-direction: column;
+                text-align: center;
+                max-width: 100%;
+            }
+
+            .info-card-icon {
+                margin: 0 auto;
+            }
+
+            .info-cards {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .calculator-hero h1 {
+                font-size: 1.5rem;
+                padding: 0 1rem;
+            }
+
+            .calculator-hero-subtitle {
+                padding: 0 1rem;
+            }
+
+            .case-type-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .case-type-card {
+                padding: 1rem;
+            }
+
+            .case-type-desc {
+                font-size: 0.8rem;
+                margin-left: 0;
+            }
+
+            .complexity-grid {
+                display: flex;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                gap: 0.75rem;
+                padding-bottom: 0.5rem;
+                max-width: 100%;
+            }
+
+            .complexity-card {
+                min-width: 100px;
+                flex-shrink: 0;
+                padding: 1rem;
+            }
+
+            .form-section-title {
+                font-size: 1rem;
+            }
+
+            .result-fee-range {
+                font-size: 1.25rem;
+            }
+
+            .result-includes-list li {
+                font-size: 0.85rem;
+            }
+
+            .page-footer {
+                padding: 2rem 0;
+                margin-top: 2rem;
+            }
+
+            /* Form inputs */
+            .form-input,
+            select,
+            input {
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR (Synced with index.html) -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <img src="images/logo.png" alt="Yılmaz Hukuk Logo" class="logo-image">
+                <span class="logo-text">Yılmaz Hukuk</span>
+            </a>
+            <ul class="navbar-menu">
+                <li><a href="index.html" class="navbar-link">Ana Sayfa</a></li>
+                <li><a href="practice-areas.html" class="navbar-link">Uzmanlık Alanları</a></li>
+                <li class="navbar-item">
+                    <a href="#" class="navbar-link">Hizmetler ▾</a>
+                    <div class="navbar-dropdown">
+                        <a href="randevu.html" class="dropdown-item">
+                            <span class="dropdown-icon">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                    <line x1="16" y1="2" x2="16" y2="6" />
+                                    <line x1="8" y1="2" x2="8" y2="6" />
+                                    <line x1="3" y1="10" x2="21" y2="10" />
+                                </svg>
+                            </span>
+                            <span class="dropdown-text">
+                                <span class="dropdown-title">Online Randevu</span>
+                                <span class="dropdown-desc">Hemen randevu alın</span>
+                            </span>
+                        </a>
+                        <a href="ucret-hesaplayici.html" class="dropdown-item">
+                            <span class="dropdown-icon">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <rect x="4" y="2" width="16" height="20" rx="2" />
+                                    <line x1="8" y1="6" x2="16" y2="6" />
+                                    <line x1="8" y1="10" x2="16" y2="10" />
+                                    <line x1="8" y1="14" x2="12" y2="14" />
+                                </svg>
+                            </span>
+                            <span class="dropdown-text">
+                                <span class="dropdown-title">Ücret Hesaplayıcı</span>
+                                <span class="dropdown-desc">Tahmini ücret öğrenin</span>
+                            </span>
+                        </a>
+                        <a href="sss.html" class="dropdown-item">
+                            <span class="dropdown-icon">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                                    <line x1="12" y1="17" x2="12.01" y2="17" />
+                                </svg>
+                            </span>
+                            <span class="dropdown-text">
+                                <span class="dropdown-title">SSS</span>
+                                <span class="dropdown-desc">Sıkça sorulan sorular</span>
+                            </span>
+                        </a>
+                    </div>
+                </li>
+                <li><a href="team.html" class="navbar-link">Avukatlarımız</a></li>
+                <li><a href="contact.html" class="navbar-link">İletişim</a></li>
+            </ul>
+            <a href="randevu.html" class="btn btn-gold navbar-cta">Online Randevu</a>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menü">
+                <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 8h20M4 14h20M4 20h20" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu-overlay" id="mobile-overlay"></div>
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="index.html" class="mobile-menu-link">Ana Sayfa</a>
+        <a href="practice-areas.html" class="mobile-menu-link">Uzmanlık Alanları</a>
+        <a href="randevu.html" class="mobile-menu-link">Online Randevu</a>
+        <a href="ucret-hesaplayici.html" class="mobile-menu-link">Ücret Hesaplayıcı</a>
+        <a href="sss.html" class="mobile-menu-link">SSS</a>
+        <a href="team.html" class="mobile-menu-link">Avukatlarımız</a>
+        <a href="contact.html" class="mobile-menu-link">İletişim</a>
+        <a href="randevu.html" class="btn btn-gold mt-8">Randevu Al</a>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="calculator-hero">
+        <div class="container">
+            <div class="calculator-hero-content">
+                <h1>Avukatlık Ücreti Hesaplayıcı</h1>
+                <p class="calculator-hero-subtitle">Dava türüne göre tahmini avukatlık ücretinizi hemen öğrenin</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <section class="section bg-gray-50">
+        <div class="container">
+            <!-- Warning Banner -->
+            <div class="warning-banner">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path
+                        d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                    <line x1="12" y1="9" x2="12" y2="13" />
+                    <line x1="12" y1="17" x2="12.01" y2="17" />
+                </svg>
+                <p><strong>Bilgilendirme:</strong> Bu hesaplayıcı tahmini değerler sunar. Kesin ücret, davanın
+                    karmaşıklığına göre ücretsiz ön görüşmede belirlenir. Tüm ücretler TBB Avukatlık Asgari Ücret
+                    Tarifesi'ne (AAÜT 2026) uygundur.</p>
+            </div>
+
+            <div class="calculator-content">
+                <!-- Calculator Form -->
+                <div class="calculator-form">
+                    <h3 class="form-section-title">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <rect x="4" y="2" width="16" height="20" rx="2" />
+                            <line x1="8" y1="6" x2="16" y2="6" />
+                            <line x1="8" y1="10" x2="16" y2="10" />
+                            <line x1="8" y1="14" x2="12" y2="14" />
+                            <line x1="8" y1="18" x2="10" y2="18" />
+                        </svg>
+                        Hukuk Alanı Seçin
+                    </h3>
+
+                    <div class="case-type-grid">
+                        <label class="case-type-card" onclick="selectCaseType(this, 'is')">
+                            <input type="radio" name="caseType" value="is">
+                            <div class="case-type-header">
+                                <div class="case-type-icon">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                                    </svg>
+                                </div>
+                                <div class="case-type-title">İş Hukuku</div>
+                            </div>
+                            <div class="case-type-desc">Kıdem, işe iade, iş kazası</div>
+                        </label>
+                        <label class="case-type-card" onclick="selectCaseType(this, 'aile')">
+                            <input type="radio" name="caseType" value="aile">
+                            <div class="case-type-header">
+                                <div class="case-type-icon">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                        <circle cx="9" cy="7" r="4" />
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                    </svg>
+                                </div>
+                                <div class="case-type-title">Aile Hukuku</div>
+                            </div>
+                            <div class="case-type-desc">Boşanma, velayet, nafaka</div>
+                        </label>
+                        <label class="case-type-card" onclick="selectCaseType(this, 'ceza')">
+                            <input type="radio" name="caseType" value="ceza">
+                            <div class="case-type-header">
+                                <div class="case-type-icon">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <line x1="12" y1="8" x2="12" y2="12" />
+                                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                                    </svg>
+                                </div>
+                                <div class="case-type-title">Ceza Hukuku</div>
+                            </div>
+                            <div class="case-type-desc">Ağır ceza, asliye ceza</div>
+                        </label>
+                        <label class="case-type-card" onclick="selectCaseType(this, 'gayrimenkul')">
+                            <input type="radio" name="caseType" value="gayrimenkul">
+                            <div class="case-type-header">
+                                <div class="case-type-icon">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                        <polyline points="9 22 9 12 15 12 15 22" />
+                                    </svg>
+                                </div>
+                                <div class="case-type-title">Gayrimenkul</div>
+                            </div>
+                            <div class="case-type-desc">Tapu, kira, tahliye</div>
+                        </label>
+                    </div>
+
+                    <!-- Case Subtype Section -->
+                    <div class="case-subtype-section" id="subtypeSection">
+                        <label class="form-label">Dava Türü Seçin *</label>
+                        <select id="caseSubtype" class="form-input" onchange="calculateFee()">
+                            <option value="">Seçiniz</option>
+                        </select>
+                    </div>
+
+                    <!-- Case Value -->
+                    <div style="margin-bottom: 2rem;">
+                        <label class="form-label">Dava Değeri (Varsa)</label>
+                        <input type="number" id="caseValue" class="form-input" placeholder="Örn: 500000"
+                            onchange="calculateFee()">
+                        <p style="font-size: 0.8rem; color: var(--color-gray-500); margin-top: 0.5rem;">TL cinsinden
+                            tahmini dava değerini girin</p>
+                    </div>
+
+                    <!-- Complexity -->
+                    <h4 style="margin-bottom: 1rem;">Karmaşıklık Düzeyi</h4>
+                    <div class="complexity-grid">
+                        <label class="complexity-card low selected" onclick="selectComplexity(this, 'low')">
+                            <input type="radio" name="complexity" value="low" checked>
+                            <div class="complexity-level">●</div>
+                            <div class="complexity-title">Basit</div>
+                            <div class="complexity-desc">Standart süreç</div>
+                        </label>
+                        <label class="complexity-card medium" onclick="selectComplexity(this, 'medium')">
+                            <input type="radio" name="complexity" value="medium">
+                            <div class="complexity-level">●●</div>
+                            <div class="complexity-title">Orta</div>
+                            <div class="complexity-desc">Ek belgeler</div>
+                        </label>
+                        <label class="complexity-card high" onclick="selectComplexity(this, 'high')">
+                            <input type="radio" name="complexity" value="high">
+                            <div class="complexity-level">●●●</div>
+                            <div class="complexity-title">Karmaşık</div>
+                            <div class="complexity-desc">Çoklu taraf</div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Result Sidebar -->
+                <div class="result-sidebar">
+                    <div class="result-card">
+                        <div class="result-title">Tahmini Ücret Aralığı</div>
+                        <div class="result-fee-range placeholder" id="feeRange">
+                            Hesaplamak için seçim yapın
+                        </div>
+                        <div class="result-disclaimer">
+                            Bu tutar tahmini olup, kesin ücret görüşme sonrası belirlenir.
+                        </div>
+                        <div class="result-includes">
+                            <div class="result-includes-title">Bu Ücrete Dahil:</div>
+                            <ul class="result-includes-list">
+                                <li>
+                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    Ücretsiz ön değerlendirme
+                                </li>
+                                <li>
+                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    Tüm duruşma takibi
+                                </li>
+                                <li>
+                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    Belge hazırlama
+                                </li>
+                                <li>
+                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    Süreç danışmanlığı
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="randevu.html" class="result-cta">Kesin Fiyat İçin Görüşme Al</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Cards -->
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="info-card-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+                            <line x1="1" y1="10" x2="23" y2="10" />
+                        </svg>
+                    </div>
+                    <div class="info-card-content">
+                        <h4>Taksit İmkanı</h4>
+                        <p>Avukatlık ücretlerinde 3-12 ay arasında taksit imkanı sunuyoruz. Detaylar için görüşme
+                            sırasında bilgi alabilirsiniz.</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-card-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <line x1="16" y1="13" x2="8" y2="13" />
+                            <line x1="16" y1="17" x2="8" y2="17" />
+                        </svg>
+                    </div>
+                    <div class="info-card-content">
+                        <h4>AAÜT 2026 Uyumlu</h4>
+                        <p>Tüm ücretlerimiz Türkiye Barolar Birliği Avukatlık Asgari Ücret Tarifesi'ne uygun olarak
+                            belirlenmektedir.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <div class="container">
+            <p>&copy; 2026 Yılmaz Hukuk Bürosu. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/905321234567?text=Merhaba, ücret hakkında bilgi almak istiyorum" class="whatsapp-float"
+        target="_blank" aria-label="WhatsApp">
+        <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+        </svg>
+    </a>
+
+    <script>
+        // Case subtypes data
+        const subtypes = {
+            is: [
+                { value: 'ise-iade', label: 'İşe İade Davası', min: 35000, max: 75000 },
+                { value: 'kidem', label: 'Kıdem/İhbar Tazminatı', min: 25000, max: 50000 },
+                { value: 'is-kazasi', label: 'İş Kazası Tazminatı', min: 40000, max: 100000 }
+            ],
+            aile: [
+                { value: 'anlasmalı-bosanma', label: 'Anlaşmalı Boşanma', min: 20000, max: 35000 },
+                { value: 'cekismeli-bosanma', label: 'Çekişmeli Boşanma', min: 40000, max: 100000 },
+                { value: 'velayet', label: 'Velayet Davası', min: 30000, max: 60000 },
+                { value: 'nafaka', label: 'Nafaka Davası', min: 15000, max: 35000 }
+            ],
+            ceza: [
+                { value: 'agir-ceza', label: 'Ağır Ceza Davası', min: 75000, max: 200000 },
+                { value: 'asliye-ceza', label: 'Asliye Ceza Davası', min: 30000, max: 75000 },
+                { value: 'tutukluluk', label: 'Tutukluluk İtirazı', min: 15000, max: 30000 }
+            ],
+            gayrimenkul: [
+                { value: 'tapu-iptal', label: 'Tapu İptal Davası', min: 40000, max: 100000 },
+                { value: 'kira', label: 'Kira/Tahliye Davası', min: 20000, max: 45000 }
+            ]
+        };
+
+        let currentSubtypes = [];
+
+        function selectCaseType(card, type) {
+            // Update UI
+            document.querySelectorAll('.case-type-card').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            card.querySelector('input').checked = true;
+
+            // Show subtype section
+            const subtypeSection = document.getElementById('subtypeSection');
+            const subtypeSelect = document.getElementById('caseSubtype');
+
+            currentSubtypes = subtypes[type] || [];
+
+            subtypeSelect.innerHTML = '<option value="">Seçiniz</option>';
+            currentSubtypes.forEach(st => {
+                subtypeSelect.innerHTML += `<option value="${st.value}">${st.label}</option>`;
+            });
+
+            subtypeSection.classList.add('active');
+            calculateFee();
+        }
+
+        function selectComplexity(card, level) {
+            document.querySelectorAll('.complexity-card').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            card.querySelector('input').checked = true;
+            calculateFee();
+        }
+
+        function calculateFee() {
+            const subtypeSelect = document.getElementById('caseSubtype');
+            const caseValue = document.getElementById('caseValue').value;
+            const complexity = document.querySelector('input[name="complexity"]:checked')?.value || 'low';
+            const feeRange = document.getElementById('feeRange');
+
+            if (!subtypeSelect.value) {
+                feeRange.textContent = 'Dava türü seçin';
+                feeRange.classList.add('placeholder');
+                return;
+            }
+
+            const selected = currentSubtypes.find(st => st.value === subtypeSelect.value);
+            if (!selected) return;
+
+            let min = selected.min;
+            let max = selected.max;
+
+            // Adjust for complexity
+            if (complexity === 'medium') {
+                min *= 1.2;
+                max *= 1.2;
+            } else if (complexity === 'high') {
+                min *= 1.5;
+                max *= 1.5;
+            }
+
+            // Adjust for case value
+            if (caseValue && parseInt(caseValue) > 500000) {
+                const multiplier = 1 + (parseInt(caseValue) / 5000000);
+                min *= Math.min(multiplier, 2);
+                max *= Math.min(multiplier, 2);
+            }
+
+            min = Math.round(min / 1000) * 1000;
+            max = Math.round(max / 1000) * 1000;
+
+            feeRange.textContent = `₺${min.toLocaleString('tr-TR')} - ₺${max.toLocaleString('tr-TR')}`;
+            feeRange.classList.remove('placeholder');
+        }
+    </script>
+
+    <script src="script.js"></script>
+    <script src="js/common.js"></script>
+</body>
+
+</html>

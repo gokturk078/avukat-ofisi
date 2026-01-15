@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uzaktan Çalışma Yönetmeliği 2.0 ve Bağlantıyı Kesme Hakkı | Yılmaz Hukuk</title>
+    <meta name="description"
+        content="2026'da yürürlüğe giren 'Right to Disconnect' (Bağlantıyı Kesme Hakkı) nedir? Uzaktan çalışanların yeni hakları, mesai saatleri dışı iletişim yasakları.">
+    <link rel="canonical" href="https://yilmazhukuk.com/blog-uzaktan-calisma.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <style>
+        .reading-progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            z-index: 1001;
+        }
+
+        .reading-progress-bar {
+            height: 100%;
+            background: var(--color-gold);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        .blog-header {
+            background: linear-gradient(135deg, var(--color-navy-dark) 0%, var(--color-navy) 100%);
+            padding: 160px 0 80px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1593640408182-31c70c8268f5?q=80&w=2000&auto=format&fit=crop') center/cover;
+            opacity: 0.15;
+            mix-blend-mode: overlay;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .blog-category {
+            background: var(--color-gold);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .blog-title {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            font-family: var(--font-display);
+        }
+
+        .blog-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 4rem;
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .blog-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--color-gray-700);
+        }
+
+        .blog-content h2 {
+            font-size: 1.75rem;
+            color: var(--color-navy);
+            margin: 2.5rem 0 1rem;
+            font-family: var(--font-display);
+        }
+
+        .blog-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-content ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .blog-content li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .blog-content blockquote {
+            border-left: 4px solid var(--color-gold);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--color-navy);
+            font-style: italic;
+            background: var(--color-gray-50);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .blog-sidebar {
+            position: sticky;
+            top: 120px;
+            align-self: start;
+        }
+
+        .sidebar-widget {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--color-gray-100);
+        }
+
+        .sidebar-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-navy);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-gray-100);
+        }
+
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc-list li {
+            margin-bottom: 0.75rem;
+        }
+
+        .toc-list a {
+            color: var(--color-gray-600);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+            display: block;
+            padding-left: 10px;
+            border-left: 2px solid transparent;
+        }
+
+        .toc-list a:hover,
+        .toc-list a.active {
+            color: var(--color-gold);
+            border-left-color: var(--color-gold);
+        }
+
+        .author-card {
+            text-align: center;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid var(--color-gold);
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .share-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .share-btn.linkedin {
+            background: #0077b5;
+        }
+
+        .share-btn.twitter {
+            background: #000000;
+        }
+
+        .share-btn.whatsapp {
+            background: #25D366;
+        }
+
+        @media (max-width: 1024px) {
+            .blog-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .blog-sidebar {
+                position: static;
+                order: 2;
+            }
+
+            .blog-title {
+                font-size: 2.25rem;
+            }
+
+            .blog-content {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .blog-header {
+                padding: 120px 0 60px;
+            }
+
+            .blog-title {
+                font-size: 1.75rem;
+            }
+
+            .blog-content {
+                padding: 1.5rem;
+            }
+
+            .blog-layout {
+                margin-top: -40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reading-progress-container">
+        <div class="reading-progress-bar" id="readingProgress"></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <img src="images/logo.png" alt="Yılmaz Hukuk Logo" class="logo-image">
+                <span class="logo-text">Yılmaz Hukuk</span>
+            </a>
+            <ul class="navbar-menu">
+                <li><a href="index.html" class="navbar-link">Ana Sayfa</a></li>
+                <li><a href="practice-areas.html" class="navbar-link">Uzmanlık Alanları</a></li>
+                <li><a href="blog.html" class="navbar-link active">Blog</a></li>
+                <li><a href="contact.html" class="navbar-link">İletişim</a></li>
+            </ul>
+            <a href="contact.html" class="btn btn-primary navbar-cta">Ücretsiz Ön Görüşme</a>
+            <button class="mobile-menu-btn" id="mobile-menu-btn"><svg width="28" height="28" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <path d="M4 8h20M4 14h20M4 20h20" />
+                </svg></button>
+        </div>
+    </nav>
+    <div class="mobile-menu-overlay" id="mobile-overlay"></div>
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="index.html" class="mobile-menu-link">Ana Sayfa</a>
+        <a href="blog.html" class="mobile-menu-link">Blog</a>
+        <a href="contact.html" class="mobile-menu-link">İletişim</a>
+    </div>
+
+    <!-- HEADER -->
+    <header class="blog-header">
+        <div class="container">
+            <div class="blog-meta">
+                <span class="blog-category">İş Hukuku</span>
+                <span>•</span>
+                <span>25 Ocak 2026</span>
+                <span>•</span>
+                <span>5 dk okuma</span>
+            </div>
+            <h1 class="blog-title">Uzaktan Çalışma Yönetmeliği 2.0: 'Right to Disconnect' (Bağlantıyı Kesme Hakkı)</h1>
+            <p style="font-size: 1.1rem; max-width: 800px; opacity: 0.9;">Mesai bittiğinde telefonunuzu kapatamıyor
+                musunuz? 2026 yılı itibariyle işverenlerin, çalışanları mesai dışı saatlerde rahatsız etmesi yasal bir
+                suç haline geldi.</p>
+        </div>
+    </header>
+
+    <!-- CONTENT -->
+    <section class="section bg-gray-50" style="padding-top: 0;">
+        <div class="container">
+            <div class="blog-layout">
+                <article class="blog-content">
+                    <p class="lead" style="font-size: 1.25rem; font-weight: 500; color: var(--color-navy);">Pandemiyle
+                        hayatımıza giren uzaktan çalışma, yıllar içinde sınırları belirsiz bir "sürekli çalışma" haline
+                        dönüşmüştü. 2026 başında yürürlüğe giren yeni düzenleme ile çalışanların dijital prangaları
+                        çözüldü.</p>
+
+                    <h2 id="right-to-disconnect">1. Bağlantıyı Kesme Hakkı Nedir?</h2>
+                    <p>Çalışanın mesai saatleri dışında işle ilgili e-posta, arama veya mesajlara yanıt vermeme yasal
+                        hakkıdır. İşveren bu sebeple çalışana herhangi bir disiplin cezası uygulayamaz, mobbing yapamaz
+                        veya performans değerlendirmesine negatif not düşemez.</p>
+
+                    <h2 id="masraf-karsilama">2. Elektrik ve İnternet Desteği</h2>
+                    <p>Yeni yönetmelik, evden çalışan personelin enerji ve internet maliyetlerinin işveren tarafından
+                        karşılanmasını zorunlu kılıyor. 2026 asgari standartlarına göre, fatura bedelinin %30'u "uzaktan
+                        çalışma tazminatı" olarak bordroya yansıtılmak zorunda.</p>
+
+                    <h2 id="kamera-takibi">3. Kamera ile Takip Yasağı</h2>
+                    <blockquote>
+                        "Ev mahremiyeti, iş yeri disiplininin önündedir." - Anayasa Mahkemesi, 2025/112
+                    </blockquote>
+                    <p>İşverenin, uzaktan çalışan personeli bilgisayar kamerasıyla sürekli izlemesi, klavye tuşlarını
+                        takip etmesi (keylogging) veya ekran görüntüsü alması, açık rıza olsa dahi KVKK'ya aykırı
+                        bulundu.</p>
+
+                    <h2 id="ne-yapilmali">4. İşverenler Ne Yapmalı?</h2>
+                    <ol>
+                        <li>İş sözleşmelerini revize edin ve mesai saatlerini netleştirin.</li>
+                        <li>Acil durum protokolü belirleyin: Hangi durumlarda mesai dışı iletişim kurulabilir?</li>
+                        <li>Otomatik yanıt sistemlerini devreye sokun.</li>
+                    </ol>
+
+                    <h2 id="sonuc">Sonuç</h2>
+                    <p>Uzaktan çalışma bir ayrıcalık değil, yasal çerçevesi netleşmiş bir çalışma modelidir. Haklarınızı
+                        bilmek, tükenmişlik sendromundan (burnout) korunmanın ilk adımıdır.</p>
+                </article>
+
+                <aside class="blog-sidebar">
+                    <div class="sidebar-widget author-card">
+                        <img src="images/team-1.jpg" alt="Av. Mehmet Yılmaz" class="author-avatar"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Mehmet+Yılmaz&background=C5A572&color=fff'">
+                        <h4 style="margin-bottom: 0.5rem; color: var(--color-navy);">Av. Mehmet Yılmaz</h4>
+                        <p style="font-size: 0.9rem; color: var(--color-gray-600); margin-bottom: 1rem;">İş Hukuku
+                            Uzmanı</p>
+                        <a href="contact.html" class="btn btn-outline-navy btn-sm" style="width: 100%;">Danışmanlık
+                            Al</a>
+                    </div>
+
+                    <div class="sidebar-widget">
+                        <h3 class="sidebar-title">İçindekiler</h3>
+                        <ul class="toc-list">
+                            <li><a href="#right-to-disconnect">Bağlantıyı Kesme Hakkı</a></li>
+                            <li><a href="#masraf-karsilama">Masraf Karşılama</a></li>
+                            <li><a href="#kamera-takibi">Kamera Takip Yasağı</a></li>
+                            <li><a href="#ne-yapilmali">İşverenler Ne Yapmalı?</a></li>
+                            <li><a href="#sonuc">Sonuç</a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="border: none; padding: 2rem 0;">
+                <p>&copy; 2026 Yılmaz Hukuk Bürosu. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script>
+        window.onscroll = function () {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("readingProgress").style.width = scrolled + "%";
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    document.querySelectorAll('.toc-list a').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href').substring(1) === entry.target.id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('h2[id]').forEach(section => { observer.observe(section); });
+    </script>
+</body>
+
+</html>
